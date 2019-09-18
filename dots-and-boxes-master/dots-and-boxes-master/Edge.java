@@ -6,7 +6,6 @@ public class Edge {
     Edge() {
         x = y = -1;
         horizontal = false;
-        
     }
 
     Edge(int x, int y, boolean horizontal) {
