@@ -32,27 +32,7 @@ Load the code into the software of choice.
 Run
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+You know you can succesfully run the program in its current stage if you can select different playing strategies from 2 players. Then, let the games begin!
 
 ## Authors
 
@@ -61,10 +41,6 @@ Give an example
 * **Wessel van der Rest** - *s2873672*
 * **Marc Tuinier** - *s2929139*
 
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
