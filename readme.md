@@ -11,10 +11,12 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-- (Download the latest version of Java)[https://www.java.com/en/download/]
-- A program like that runs Java files, (like Eclipse) [https://www.eclipse.org/downloads/]
+- Download the latest version of Java
+- A program like that runs Java files, like Eclipse
 
 ```
+(Java)[https://www.java.com/en/download/]
+(Eclipse)[https://www.eclipse.org/downloads/]
 
 ### Installing
 
