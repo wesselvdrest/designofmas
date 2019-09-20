@@ -1,6 +1,6 @@
 # Dots and Boxes: The Influence of Theory of Mind
 
-The Influence of Theory of Mind on Dots and Boxes in a n’ player game.
+The Influence of Theory of Mind on Dots and Boxes in a n-player game.
 
 ## Getting Started
 
