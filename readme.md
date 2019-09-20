@@ -1,6 +1,6 @@
 # The Influence of Theory of Mind (TOM) in a N-Player Game
 
-_For this study we used Dots and Boxes_
+_For this study we used the game Dots-and-Boxes_
 
 ## Getting Started
 
