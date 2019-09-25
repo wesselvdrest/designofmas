@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-- Download the latest version of Java
+- Update to Java Version 8 Update 221 (Using JDK 11 and 13 also works)
 - A program like that runs Java files, like Eclipse
 
 ```
@@ -25,10 +25,10 @@ A step by step overview of how to get the development environment running.
 The first step is to clone the file “Our Project”
 
 ```
-https://github.com/wesselvdrest/designofmas.git
+git clone https://github.com/wesselvdrest/designofmas.git
 ```
 
-Load the code into the software of choice.
+Load the code into your Java IDE of choice. For example, in Eclipse 2019-09, go to "File" -> "Open projects from file system" and then select the Folder `Our-project/Our-project` which contains the (hidden) file `.project`.
 
 ```
 Run
