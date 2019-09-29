@@ -27,9 +27,9 @@ public class Main {
         blueList = new JComboBox<String>(players);
         greenList = new JComboBox<String>(players);
 
-        sizeButton = new JRadioButton[10];
+        sizeButton = new JRadioButton[7];
         sizeGroup = new ButtonGroup();
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<7; i++) {
             String size = String.valueOf(i+3);
             sizeButton[i] = new JRadioButton(size + " x " + size);
             sizeButton[i].setBackground(Color.DARK_GRAY);
@@ -71,7 +71,7 @@ public class Main {
                 if(bIndex > 1) blueSolver = getSolver(bIndex - 1);
                 if(gIndex > 1) greenSolver = getSolver(gIndex - 1);
 //            }
-            for(int i=0; i<10; i++) {
+            for(int i=0; i<7; i++) {
                 if(sizeButton[i].isSelected()) {
                     n = i+3;
                     startGame = true;
@@ -138,12 +138,12 @@ public class Main {
 
         ++constraints.gridy;
         JLabel messageLabel = new JLabel("<html><font color='white'>Select the size of the board:</font></html>");
-        messageLabel.setPreferredSize(new Dimension(400, 50));
+        messageLabel.setPreferredSize(new Dimension(400, 7));
         grid.add(messageLabel, constraints);
 
         JPanel sizePanel = new JPanel(new GridLayout(4, 2));
         sizePanel.setPreferredSize(new Dimension(400, 100));
-        for(int i=0; i<10; i++)
+        for(int i=0; i<7; i++)
             sizePanel.add(sizeButton[i]);
         sizePanel.setBackground(Color.DARK_GRAY);
         sizeGroup.clearSelection();

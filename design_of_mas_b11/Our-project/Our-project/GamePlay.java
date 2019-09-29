@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class GamePlay {
 
-    private final static int size = 6;
-    private final static int dist = 50;
+    private final static int size = 15;
+    private final static int dist = 70;
 
     private int n;
     private Board board;
