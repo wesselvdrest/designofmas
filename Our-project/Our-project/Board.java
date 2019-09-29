@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -5,13 +6,15 @@ public class Board implements Cloneable {
 
     final static int RED = 0;
     final static int BLUE = 1;
-    final static int BLACK = 2;
-    final static int BLANK = 3;
+    final static int GREEN = 2;
+    final static int BLACK = 3;
+    final static int BLANK = 4;
+
 
     private int[][] hEdge;
     private int[][] vEdge;
     private int[][] box;
-    private int n, redScore, blueScore;
+    private int n, redScore, blueScore, greenScore;
 
     public Board(int n) {
         hEdge = new int[n-1][n];
@@ -21,7 +24,7 @@ public class Board implements Cloneable {
         fill(vEdge,BLANK);
         fill(box,BLANK);
         this.n = n;
-        redScore = blueScore = 0;
+        redScore = blueScore = greenScore = 0;
     }
 
     public Board clone() {
@@ -41,6 +44,7 @@ public class Board implements Cloneable {
 
         cloned.redScore = redScore;
         cloned.blueScore = blueScore;
+        cloned.greenScore = greenScore;
 
         return cloned;
     }
@@ -60,15 +64,22 @@ public class Board implements Cloneable {
     public int getBlueScore() {
         return blueScore;
     }
+    
+    public int getGreenScore() {
+        return greenScore;
+    }
 
     public int getScore(int color) {
         if(color == RED) return redScore;
-        else return blueScore;
+        else if(color == BLUE) return blueScore;
+        else return greenScore;
     }
 
     public static int toggleColor(int color) {
         if(color == RED)
             return BLUE;
+        else if(color == BLUE)
+            return GREEN;
         else
             return RED;
     }
@@ -93,13 +104,15 @@ public class Board implements Cloneable {
             box[x][y]=color;
             ret.add(new Point(x,y));
             if(color == RED) redScore++;
-            else blueScore++;
+            else if(color == BLUE) blueScore++;
+            else greenScore++;
         }
         if(y>0 && vEdge[x][y-1]==BLACK && vEdge[x+1][y-1]==BLACK && hEdge[x][y-1]==BLACK) {
             box[x][y-1]=color;
             ret.add(new Point(x,y-1));
             if(color == RED) redScore++;
-            else blueScore++;
+            else if(color == BLUE) blueScore++;
+            else greenScore++;
         }
         return ret;
     }
@@ -111,24 +124,27 @@ public class Board implements Cloneable {
             box[x][y]=color;
             ret.add(new Point(x,y));
             if(color == RED) redScore++;
-            else blueScore++;
+            else if(color == BLUE) blueScore++;
+            else greenScore++;
         }
         if(x>0 && hEdge[x-1][y]==BLACK && hEdge[x-1][y+1]==BLACK && vEdge[x-1][y]==BLACK) {
             box[x-1][y]=color;
             ret.add(new Point(x-1,y));
             if(color == RED) redScore++;
-            else blueScore++;
+            else if(color == BLUE) blueScore++;
+            else greenScore++;
         }
         return ret;
     }
 
     public boolean isComplete() {
-        return (redScore + blueScore) == (n - 1) * (n - 1);
+        return (redScore + blueScore + greenScore) == (n - 1) * (n - 1);
     }
 
     public int getWinner() {
-        if(redScore > blueScore) return RED;
-        else if(redScore < blueScore) return BLUE;
+        if(redScore > blueScore && redScore > greenScore) return RED;
+        else if(blueScore > redScore && blueScore > greenScore) return BLUE;
+        else if(greenScore > redScore && greenScore > blueScore) return GREEN;
         else return BLANK;
     }
 
