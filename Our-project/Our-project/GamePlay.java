@@ -8,23 +8,23 @@ import java.util.ArrayList;
 
 public class GamePlay {
 
-    private final static int size = 8;
-    private final static int dist = 40;
+    private final static int size = 15;
+    private final static int dist = 70;
 
     private int n;
     private Board board;
     private int turn;
     private boolean mouseEnabled;
 
-    GameSolver redSolver, blueSolver, solver;
-    String redName, blueName;
+    GameSolver redSolver, blueSolver, greenSolver, solver;
+    String redName, blueName, greenName;
     Main parent;
 
     private JLabel[][] hEdge, vEdge, box;
     private boolean[][] isSetHEdge, isSetVEdge;
 
     private JFrame frame;
-    private JLabel redScoreLabel, blueScoreLabel, statusLabel;
+    private JLabel redScoreLabel, blueScoreLabel, greenScoreLabel, statusLabel;
 
     private MouseListener mouseListener = new MouseListener() {
         @Override
@@ -50,11 +50,21 @@ public class GamePlay {
             int x=location.getX(), y=location.getY();
             if(location.isHorizontal()) {
                 if(isSetHEdge[x][y]) return;
-                hEdge[x][y].setBackground((turn == Board.RED) ? Color.RED : Color.BLUE);
+                if (turn == Board.RED)
+                	hEdge[x][y].setBackground(Color.RED);
+                else if (turn == Board.BLUE)
+                	hEdge[x][y].setBackground(Color.BLUE);
+                else
+                	hEdge[x][y].setBackground(Color.GREEN);
             }
             else {
                 if(isSetVEdge[x][y]) return;
-                vEdge[x][y].setBackground((turn == Board.RED) ? Color.RED : Color.BLUE);
+                if (turn == Board.RED)
+                	vEdge[x][y].setBackground(Color.RED);
+                else if (turn == Board.BLUE)
+                	vEdge[x][y].setBackground(Color.BLUE);
+                else
+                	vEdge[x][y].setBackground(Color.GREEN);
             }
         }
 
@@ -65,11 +75,11 @@ public class GamePlay {
             int x=location.getX(), y=location.getY();
             if(location.isHorizontal()) {
                 if(isSetHEdge[x][y]) return;
-                hEdge[x][y].setBackground(Color.WHITE);
+                hEdge[x][y].setBackground(Color.GRAY);
             }
             else {
                 if(isSetVEdge[x][y]) return;
-                vEdge[x][y].setBackground(Color.WHITE);
+                vEdge[x][y].setBackground(Color.GRAY);
             }
         }
     };
@@ -91,10 +101,20 @@ public class GamePlay {
         }
 
         for(Point p : ret)
-            box[p.x][p.y].setBackground((turn == Board.RED) ? Color.RED : Color.BLUE);
+        	if (turn == Board.RED)
+                box[p.x][p.y].setBackground(Color.RED);
+            else if (turn == Board.BLUE)
+                box[p.x][p.y].setBackground(Color.BLUE);
+            else
+                box[p.x][p.y].setBackground(Color.GREEN);
+
 
         redScoreLabel.setText(String.valueOf(board.getRedScore()));
+        redScoreLabel.setBackground(Color.DARK_GRAY);
         blueScoreLabel.setText(String.valueOf(board.getBlueScore()));
+        blueScoreLabel.setBackground(Color.DARK_GRAY);
+        greenScoreLabel.setText(String.valueOf(board.getGreenScore()));
+        greenScoreLabel.setBackground(Color.DARK_GRAY);
 
         if(board.isComplete()) {
             int winner = board.getWinner();
@@ -105,6 +125,10 @@ public class GamePlay {
             else if(winner == Board.BLUE) {
                 statusLabel.setText("Player-2 is the winner!");
                 statusLabel.setForeground(Color.BLUE);
+            }
+            else if(winner == Board.GREEN) {
+                statusLabel.setText("Player-3 is the winner!");
+                statusLabel.setForeground(Color.GREEN);
             }
             else {
                 statusLabel.setText("Game Tied!");
@@ -118,6 +142,12 @@ public class GamePlay {
                 solver = blueSolver;
                 statusLabel.setText("Player-2's Turn...");
                 statusLabel.setForeground(Color.BLUE);
+            }
+            else if(turn == Board.BLUE) {
+                turn = Board.GREEN;
+                solver = greenSolver;
+                statusLabel.setText("Player-3's Turn...");
+                statusLabel.setForeground(Color.GREEN);
             }
             else {
                 turn = Board.RED;
@@ -162,7 +192,6 @@ public class GamePlay {
     private JLabel getHorizontalEdge() {
         JLabel label = new JLabel();
         label.setPreferredSize(new Dimension(dist, size));
-        label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         label.setOpaque(true);
         label.addMouseListener(mouseListener);
         return label;
@@ -171,7 +200,6 @@ public class GamePlay {
     private JLabel getVerticalEdge() {
         JLabel label = new JLabel();
         label.setPreferredSize(new Dimension(size, dist));
-        label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         label.setOpaque(true);
         label.addMouseListener(mouseListener);
         return label;
@@ -198,14 +226,16 @@ public class GamePlay {
         return label;
     }
 
-    public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver, String redName, String blueName) {
+    public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver, GameSolver greenSolver, String redName, String blueName, String greenName) {
         this.parent = parent;
         this.frame = frame;
         this.n = n;
         this.redSolver = redSolver;
         this.blueSolver = blueSolver;
+        this.greenSolver = greenSolver;
         this.redName = redName;
         this.blueName = blueName;
+        this.greenName = greenName;
         initGame();
     }
 
@@ -230,14 +260,18 @@ public class GamePlay {
         constraints.gridx = 0;
         constraints.gridy = 0;
         grid.add(getEmptyLabel(new Dimension(2 * boardWidth, 10)), constraints);
+        grid.setBackground(Color.DARK_GRAY);
         
         JPanel playerPanel = new JPanel(new GridLayout(2, 2));
         if(n>3) playerPanel.setPreferredSize(new Dimension(2 * boardWidth, dist));
         else playerPanel.setPreferredSize(new Dimension(2 * boardWidth, 2 * dist));
         playerPanel.add(new JLabel("<html><font color='red'>Player-1:", SwingConstants.CENTER));
         playerPanel.add(new JLabel("<html><font color='blue'>Player-2:", SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='green'>Player-3:", SwingConstants.CENTER));
         playerPanel.add(new JLabel("<html><font color='red'>" + redName, SwingConstants.CENTER));
         playerPanel.add(new JLabel("<html><font color='blue'>" + blueName, SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='green'>" + greenName, SwingConstants.CENTER));
+        playerPanel.setBackground(Color.DARK_GRAY);
         ++constraints.gridy;
         grid.add(playerPanel, constraints);
 
@@ -248,17 +282,23 @@ public class GamePlay {
         scorePanel.setPreferredSize(new Dimension(2 * boardWidth, dist));
         scorePanel.add(new JLabel("<html><font color='red'>Score:", SwingConstants.CENTER));
         scorePanel.add(new JLabel("<html><font color='blue'>Score:", SwingConstants.CENTER));
+        scorePanel.add(new JLabel("<html><font color='green'>Score:", SwingConstants.CENTER));
         redScoreLabel = new JLabel("0", SwingConstants.CENTER);
         redScoreLabel.setForeground(Color.RED);
         scorePanel.add(redScoreLabel);
         blueScoreLabel = new JLabel("0", SwingConstants.CENTER);
         blueScoreLabel.setForeground(Color.BLUE);
         scorePanel.add(blueScoreLabel);
+        greenScoreLabel = new JLabel("0", SwingConstants.CENTER);
+        greenScoreLabel.setForeground(Color.GREEN);
+        scorePanel.add(greenScoreLabel);
+        scorePanel.setBackground(Color.DARK_GRAY);
         ++constraints.gridy;
         grid.add(scorePanel, constraints);
 
         ++constraints.gridy;
         grid.add(getEmptyLabel(new Dimension(2 * boardWidth, 10)), constraints);
+        grid.setBackground(Color.DARK_GRAY);
 
         hEdge = new JLabel[n-1][n];
         isSetHEdge = new boolean[n-1][n];
@@ -274,6 +314,7 @@ public class GamePlay {
                 pane.add(getDot());
                 for(int j=0; j<(n-1); j++) {
                     hEdge[j][i/2] = getHorizontalEdge();
+                    hEdge[j][i/2].setBackground(Color.GRAY);
                     pane.add(hEdge[j][i/2]);
                     pane.add(getDot());
                 }
@@ -281,14 +322,18 @@ public class GamePlay {
             else {
                 for(int j=0; j<(n-1); j++) {
                     vEdge[j][i/2] = getVerticalEdge();
+                    vEdge[j][i/2].setBackground(Color.GRAY);
                     pane.add(vEdge[j][i/2]);
                     box[j][i/2] = getBox();
+                    box[j][i/2].setBackground(Color.DARK_GRAY);
                     pane.add(box[j][i/2]);
                 }
                 vEdge[n-1][i/2] = getVerticalEdge();
+                vEdge[n-1][i/2].setBackground(Color.GRAY);
                 pane.add(vEdge[n-1][i/2]);
             }
             ++constraints.gridy;
+            pane.setBackground(Color.DARK_GRAY);
             grid.add(pane, constraints);
         }
 
@@ -312,12 +357,14 @@ public class GamePlay {
 
         frame.getContentPane().removeAll();
         frame.revalidate();
+        
         frame.repaint();
 
         frame.setContentPane(grid);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.getContentPane().setBackground(Color.DARK_GRAY );
 
         goBack = false;
         manageGame();

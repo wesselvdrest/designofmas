@@ -5,31 +5,35 @@ import java.awt.event.ActionListener;
 
 public class Main {
 
-    private int n;
-    private GameSolver redSolver, blueSolver;
-    private String redName, blueName;
+    private int n = 5;
+    private GameSolver redSolver, blueSolver, greenSolver;
+    private String redName, blueName, greenName;
 
     private JFrame frame;
     private JLabel modeError, sizeError;
 
-    String[] players = {"Select player", "Human", "Random Player", "Greedy Player"};
+    String[] players = {"Human", "Random Player", "Greedy Player"};
     private JRadioButton[] sizeButton;
 
-    JComboBox<String> redList, blueList;
+    JComboBox<String> redList, blueList, greenList;
     ButtonGroup sizeGroup;
 
     public Main() {
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         redList = new JComboBox<String>(players);
         blueList = new JComboBox<String>(players);
+        greenList = new JComboBox<String>(players);
 
-        sizeButton = new JRadioButton[2];
+        sizeButton = new JRadioButton[7];
         sizeGroup = new ButtonGroup();
-        for(int i=0; i<2; i++) {
+        for(int i=0; i<7; i++) {
             String size = String.valueOf(i+3);
             sizeButton[i] = new JRadioButton(size + " x " + size);
+            sizeButton[i].setBackground(Color.DARK_GRAY);
+            sizeButton[i].setForeground(Color.white); //To see it on the black background. 
             sizeGroup.add(sizeButton[i]);
         }
     }
@@ -53,18 +57,21 @@ public class Main {
         public void actionPerformed(ActionEvent actionEvent) {
             int rIndex = redList.getSelectedIndex();
             int bIndex = blueList.getSelectedIndex();
-            if(rIndex==0 || bIndex==0) {
-                modeError.setText("You MUST select the players before continuing.");
-                return;
-            }
-            else {
+            int gIndex = greenList.getSelectedIndex();
+//            if(rIndex==0 || bIndex==0) {
+//                modeError.setText("You MUST select the players before continuing.");
+//                return;
+//            }
+//            else {
                 modeError.setText("");
                 redName = players[rIndex];
                 blueName = players[bIndex];
+                greenName = players[gIndex];
                 if(rIndex > 1) redSolver = getSolver(rIndex - 1);
                 if(bIndex > 1) blueSolver = getSolver(bIndex - 1);
-            }
-            for(int i=0; i<2; i++) {
+                if(gIndex > 1) greenSolver = getSolver(gIndex - 1);
+//            }
+            for(int i=0; i<7; i++) {
                 if(sizeButton[i].isSelected()) {
                     n = i+3;
                     startGame = true;
@@ -79,6 +86,7 @@ public class Main {
 
         redSolver = null;
         blueSolver = null;
+        greenSolver = null;
 
         JPanel grid = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -97,16 +105,27 @@ public class Main {
         ++constraints.gridy;
         grid.add(modeError, constraints);
 
-        JPanel modePanel = new JPanel(new GridLayout(2, 2));
-        modePanel.setPreferredSize(new Dimension(400, 50));
+        JPanel modePanel = new JPanel(new GridLayout(3, 1));
+        modePanel.setPreferredSize(new Dimension(400, 100));
+        modePanel.setBackground(Color.darkGray);
         modePanel.add(new JLabel("<html><font color='red'>Player-1:", SwingConstants.CENTER));
-        modePanel.add(new JLabel("<html><font color='blue'>Player-2:", SwingConstants.CENTER));
         modePanel.add(redList);
+        redList.setSelectedIndex(2);
+        redList.setBackground(Color.DARK_GRAY);
+        redList.setForeground(Color.WHITE);
+        modePanel.add(new JLabel("<html><font color='blue'>Player-2:", SwingConstants.CENTER));
         modePanel.add(blueList);
-        redList.setSelectedIndex(0);
-        blueList.setSelectedIndex(0);
+        blueList.setSelectedIndex(2);
+        blueList.setBackground(Color.DARK_GRAY);
+        blueList.setForeground(Color.WHITE);
+        modePanel.add(new JLabel("<html><font color='green'>Player-3:", SwingConstants.CENTER));
+        modePanel.add(greenList);
+        greenList.setSelectedIndex(2);
+        greenList.setBackground(Color.DARK_GRAY);
+        greenList.setForeground(Color.WHITE);
         ++constraints.gridy;
         grid.add(modePanel, constraints);
+        grid.setBackground(Color.DARK_GRAY);
 
         ++constraints.gridy;
         grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
@@ -118,14 +137,15 @@ public class Main {
         grid.add(sizeError, constraints);
 
         ++constraints.gridy;
-        JLabel messageLabel = new JLabel("Select the size of the board:");
-        messageLabel.setPreferredSize(new Dimension(400, 50));
+        JLabel messageLabel = new JLabel("<html><font color='white'>Select the size of the board:</font></html>");
+        messageLabel.setPreferredSize(new Dimension(400, 7));
         grid.add(messageLabel, constraints);
 
         JPanel sizePanel = new JPanel(new GridLayout(4, 2));
         sizePanel.setPreferredSize(new Dimension(400, 100));
-        for(int i=0; i<2; i++)
+        for(int i=0; i<7; i++)
             sizePanel.add(sizeButton[i]);
+        sizePanel.setBackground(Color.DARK_GRAY);
         sizeGroup.clearSelection();
         ++constraints.gridy;
         grid.add(sizePanel, constraints);
@@ -142,6 +162,7 @@ public class Main {
         grid.add(getEmptyLabel(new Dimension(500, 25)), constraints);
 
         frame.setContentPane(grid);
+        frame.getContentPane().setBackground( Color.DARK_GRAY );
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -154,7 +175,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        new GamePlay(this, frame, n, redSolver, blueSolver, redName, blueName);
+        new GamePlay(this, frame, n, redSolver, blueSolver, greenSolver, redName, blueName, greenName);
     }
 
     public static void main(String[] args) {
