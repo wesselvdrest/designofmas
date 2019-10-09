@@ -131,7 +131,7 @@ public class GamePlay {
                 statusLabel.setForeground(Color.BLACK);
                 appendUsingPrintWriter("./results/result.txt", "Winner: TIE, ");
             }
-            initGame();
+            initGame(); //Comment out to only see one round
         }
 
         if(ret.isEmpty()) {
