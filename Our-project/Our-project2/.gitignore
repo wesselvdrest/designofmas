@@ -15,3 +15,6 @@
 /RandomSolver.class
 /TestProgram.class
 /TreeNode.class
+/SolverRandom.class
+/SolverGreedy.class
+/SolverHeuristic.class

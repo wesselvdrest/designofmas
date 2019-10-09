@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class TestProgram {
 
     private static GameSolver getSolver(int level) {
-        if(level == 1) return new RandomSolver();
-        else if(level == 2) return new GreedySolver();
+        if(level == 1) return new SolverRandom();
+        else if(level == 2) return new SolverGreedy();
         else return null;
     }
 
