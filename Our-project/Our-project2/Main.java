@@ -8,8 +8,11 @@ import java.awt.event.ActionListener;
 // Strategies of agents and the tournament setup are implemented by our own team. 
 // Only the SolverHeuristics is copied from the original code (file GreedySolver.java), 
 // since it was an interesting strategy to add to our own strategies
+import java.util.ArrayList;
 
 public class Main {
+	
+	private CsvParser agents;
 
     private int n = 5;
     private GameSolver redSolver, blueSolver;
@@ -25,6 +28,9 @@ public class Main {
     ButtonGroup sizeGroup;
 
     public Main() {
+    	agents.main();
+    	
+        
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -175,8 +181,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-    	new CsvParser();
-
         new Main().initGUI();
     }
 

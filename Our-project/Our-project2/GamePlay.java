@@ -119,12 +119,12 @@ public class GamePlay {
         if(board.isComplete()) {
             int winner = board.getWinner();
             if(winner == Board.RED) {
-                statusLabel.setText("Player-1 is the winner!");
+                statusLabel.setText( redName + " is the winner!");
                 statusLabel.setForeground(Color.RED);
                 appendUsingPrintWriter("./results/result.txt", "Winner: RED, ");
             }
             else if(winner == Board.BLUE) {
-                statusLabel.setText("Player-2 is the winner!");
+                statusLabel.setText( blueName + " is the winner!");
                 statusLabel.setForeground(Color.BLUE);
                 appendUsingPrintWriter("./results/result.txt", "Winner: BLUE, ");
             }
@@ -140,13 +140,13 @@ public class GamePlay {
             if(turn == Board.RED) {
                 turn = Board.BLUE;
                 solver = blueSolver;
-                statusLabel.setText("Player-2's Turn...");
+                statusLabel.setText(blueName + "'s Turn...");
                 statusLabel.setForeground(Color.BLUE);
             }
             else {
                 turn = Board.RED;
                 solver = redSolver;
-                statusLabel.setText("Player-1's Turn...");
+                statusLabel.setText( redName + "'s Turn...");
                 statusLabel.setForeground(Color.RED);
             }
         }
@@ -243,18 +243,33 @@ public class GamePlay {
         label.setPreferredSize(d);
         return label;
     }
+    
+    private GameSolver getSolver(String strategy) {
+        switch(strategy) {
+        case "random": // level == 1
+        	return new SolverRandom();
+        case "greedy":
+        	return new SolverGreedy();
+        case "heuristic":
+        	return new SolverHeuristic();
+        default:
+          return null;
+      }
+    }
+    
 
     public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName) {
     	agents = new CsvParser();
     	ArrayList<Agent> list = agents.getAgents();
-        System.out.println(list.size());
+        System.out.println("ArrayList before update: "+ list.get(0).getName());
+    	
     	this.parent = parent;
         this.frame = frame;
         this.n = n;
-        this.redSolver = redSolver;
-        this.blueSolver = blueSolver;
-        this.redName = redName;
-        this.blueName = blueName;
+        this.redSolver = getSolver(list.get(0).getStrategy());
+        this.blueSolver = getSolver(list.get(1).getStrategy());
+        this.redName = list.get(0).getName();
+        this.blueName = list.get(1).getName();
         initGame();
     }
 

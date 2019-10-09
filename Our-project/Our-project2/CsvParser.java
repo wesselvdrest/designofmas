@@ -8,9 +8,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class CsvParser {
-	private static ArrayList<Agent> agents = new ArrayList<Agent>();
+	public static ArrayList<Agent> agents = new ArrayList<Agent>();
 	
-    public static void main(String[] args) {
+    public static void main() {
         String fileName= "agents.csv";
         File file= new File(fileName);
 
