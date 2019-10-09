@@ -19,7 +19,6 @@ public class Main {
     ButtonGroup sizeGroup;
 
     public Main() {
-
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -163,6 +162,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+    	new CsvParser();
+
         new Main().initGUI();
     }
 
