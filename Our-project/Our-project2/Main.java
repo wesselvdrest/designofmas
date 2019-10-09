@@ -2,6 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//
+// Original code from https://github.com/gaurav708/dots-and-boxes, this code provides the basic Dots and Boxes game, 
+// with structures like the board and turn taking conventions.
+// Strategies of agents and the tournament setup are implemented by our own team. 
+// Only the SolverHeuristics is copied from the original code (file GreedySolver.java), 
+// since it was an interesting strategy to add to our own strategies
 
 public class Main {
 
@@ -12,7 +18,7 @@ public class Main {
     private JFrame frame;
     private JLabel modeError, sizeError;
 
-    String[] players = {"Human", "Random Player", "Greedy Player"};
+    String[] players = {"Human", "Random Player", "Greedy Player", "Heuristic Player"};
     private JRadioButton[] sizeButton;
 
     JComboBox<String> redList, blueList;
@@ -45,9 +51,16 @@ public class Main {
     private boolean startGame;
 
     private GameSolver getSolver(int level) {
-        if(level == 1) return new RandomSolver();
-        else if(level == 2) return new GreedySolver();
-        else return null;
+        switch(level) {
+        case 1: // level == 1
+        	return new SolverRandom();
+        case 2:
+        	return new SolverGreedy();
+        case 3:
+        	return new SolverHeuristic();
+        default:
+          return null;
+      }
     }
 
     private ActionListener submitListener = new ActionListener() {

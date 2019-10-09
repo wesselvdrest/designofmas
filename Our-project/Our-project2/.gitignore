@@ -19,3 +19,6 @@
 /CsvParser$1.class
 /CsvParser.class
 /Agent.class
+/SolverRandom.class
+/SolverGreedy.class
+/SolverHeuristic.class

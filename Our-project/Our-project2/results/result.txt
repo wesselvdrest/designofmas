@@ -43,8 +43,12 @@ Winner: BLUE,
 Winner: BLUE, 
 Winner: RED, 
 Winner: BLUE, 
+<<<<<<< HEAD
 Winner: RED, 
 Winner: BLUE, 
 Winner: RED, 
 Winner: BLUE, 
 Winner: BLUE, 
+=======
+Winner: TIE, 
+>>>>>>> 522b37c97400fe325c3528254adfa897072f9ae4
