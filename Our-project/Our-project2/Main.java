@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class Main {
 
     private int n = 5;
-    private GameSolver redSolver, blueSolver, greenSolver;
-    private String redName, blueName, greenName;
+    private GameSolver redSolver, blueSolver;
+    private String redName, blueName;
 
     private JFrame frame;
     private JLabel modeError, sizeError;
@@ -15,7 +15,7 @@ public class Main {
     String[] players = {"Human", "Random Player", "Greedy Player"};
     private JRadioButton[] sizeButton;
 
-    JComboBox<String> redList, blueList, greenList;
+    JComboBox<String> redList, blueList;
     ButtonGroup sizeGroup;
 
     public Main() {
@@ -25,7 +25,6 @@ public class Main {
         
         redList = new JComboBox<String>(players);
         blueList = new JComboBox<String>(players);
-        greenList = new JComboBox<String>(players);
 
         sizeButton = new JRadioButton[7];
         sizeGroup = new ButtonGroup();
@@ -57,20 +56,11 @@ public class Main {
         public void actionPerformed(ActionEvent actionEvent) {
             int rIndex = redList.getSelectedIndex();
             int bIndex = blueList.getSelectedIndex();
-            int gIndex = greenList.getSelectedIndex();
-//            if(rIndex==0 || bIndex==0) {
-//                modeError.setText("You MUST select the players before continuing.");
-//                return;
-//            }
-//            else {
-                modeError.setText("");
-                redName = players[rIndex];
-                blueName = players[bIndex];
-                greenName = players[gIndex];
-                if(rIndex > 1) redSolver = getSolver(rIndex - 1);
-                if(bIndex > 1) blueSolver = getSolver(bIndex - 1);
-                if(gIndex > 1) greenSolver = getSolver(gIndex - 1);
-//            }
+            modeError.setText("");
+            redName = players[rIndex];
+            blueName = players[bIndex];
+            if(rIndex > 0) redSolver = getSolver(rIndex);
+            if(bIndex > 0) blueSolver = getSolver(bIndex);
             for(int i=0; i<7; i++) {
                 if(sizeButton[i].isSelected()) {
                     n = i+3;
@@ -86,7 +76,6 @@ public class Main {
 
         redSolver = null;
         blueSolver = null;
-        greenSolver = null;
 
         JPanel grid = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -105,7 +94,7 @@ public class Main {
         ++constraints.gridy;
         grid.add(modeError, constraints);
 
-        JPanel modePanel = new JPanel(new GridLayout(3, 1));
+        JPanel modePanel = new JPanel(new GridLayout(2, 1));
         modePanel.setPreferredSize(new Dimension(400, 100));
         modePanel.setBackground(Color.darkGray);
         modePanel.add(new JLabel("<html><font color='red'>Player-1:", SwingConstants.CENTER));
@@ -118,11 +107,6 @@ public class Main {
         blueList.setSelectedIndex(2);
         blueList.setBackground(Color.DARK_GRAY);
         blueList.setForeground(Color.WHITE);
-        modePanel.add(new JLabel("<html><font color='green'>Player-3:", SwingConstants.CENTER));
-        modePanel.add(greenList);
-        greenList.setSelectedIndex(2);
-        greenList.setBackground(Color.DARK_GRAY);
-        greenList.setForeground(Color.WHITE);
         ++constraints.gridy;
         grid.add(modePanel, constraints);
         grid.setBackground(Color.DARK_GRAY);
@@ -175,7 +159,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        new GamePlay(this, frame, n, redSolver, blueSolver, greenSolver, redName, blueName, greenName);
+        new GamePlay(this, frame, n, redSolver, blueSolver, redName, blueName);
     }
 
     public static void main(String[] args) {

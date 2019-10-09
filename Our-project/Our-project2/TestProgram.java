@@ -15,19 +15,17 @@ public class TestProgram {
         int size = Integer.parseInt(args[2]);
         int nGames = Integer.parseInt(args[3]);
         
-        int redCount = 0, blueCount = 0, greenCount = 0, tieCount = 0;
+        int redCount = 0, blueCount = 0, tieCount = 0;
 
         for (int z = 0; z < nGames; z++) {
             GameSolver redSolver = getSolver(lev1);
             GameSolver blueSolver = getSolver(lev2);
-            GameSolver greenSolver = getSolver(lev3);
             int turn = Board.RED;
             Board board = new Board(size);
             while (!board.isComplete()) {
                 Edge move;
                 if (turn == Board.RED) move = redSolver.getNextMove(board, Board.RED);
-                else if (turn == Board.BLUE) move = blueSolver.getNextMove(board, Board.BLUE);
-                else move = greenSolver.getNextMove(board, Board.GREEN);
+                else move = blueSolver.getNextMove(board, Board.BLUE);
                 ArrayList<Point> ret;
                 if (move.isHorizontal())
                     ret = board.setHEdge(move.getX(), move.getY(), turn);
@@ -39,13 +37,11 @@ public class TestProgram {
             int winner = board.getWinner();
             if (winner == Board.RED) redCount++;
             else if (winner == Board.BLUE) blueCount++;
-            else if (winner == Board.GREEN) greenCount++;
             else tieCount++;
         }
 
         System.out.println("Red (Level " + lev1 + ") Won : " + redCount);
         System.out.println("Blue (Level " + lev2 + ") Won : " + blueCount);
-        System.out.println("Green (Level " + lev3 + ") Won : " + greenCount);
         System.out.println("Tied : " + tieCount);
 
     }
