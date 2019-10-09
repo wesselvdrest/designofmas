@@ -21,6 +21,8 @@ public class GamePlay {
     private Board board;
     private int turn;
     private boolean mouseEnabled;
+    
+    private CsvParser agents;
 
     GameSolver redSolver, blueSolver, solver;
     String redName, blueName;
@@ -243,7 +245,10 @@ public class GamePlay {
     }
 
     public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName) {
-        this.parent = parent;
+    	agents = new CsvParser();
+    	ArrayList<Agent> list = agents.getAgents();
+        System.out.println(list.size());
+    	this.parent = parent;
         this.frame = frame;
         this.n = n;
         this.redSolver = redSolver;
