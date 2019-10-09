@@ -266,10 +266,11 @@ public class GamePlay {
     	this.parent = parent;
         this.frame = frame;
         this.n = n;
-        this.redSolver = getSolver(list.get(0).getStrategy());
-        this.blueSolver = getSolver(list.get(1).getStrategy());
-        this.redName = list.get(0).getName();
-        this.blueName = list.get(1).getName();
+        // if none do something
+        this.redSolver = redSolver;
+        this.blueSolver = blueSolver;
+        this.redName = redName;
+        this.blueName = blueName;
         initGame();
     }
 

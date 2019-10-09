@@ -21,7 +21,7 @@ public class Main {
     private JFrame frame;
     private JLabel modeError, sizeError;
 
-    String[] players = {"Human", "Random Player", "Greedy Player", "Heuristic Player"};
+    String[] players = {"None", "Human", "Random Player", "Greedy Player", "Heuristic Player"};
     private JRadioButton[] sizeButton;
 
     JComboBox<String> redList, blueList;
@@ -77,8 +77,18 @@ public class Main {
             modeError.setText("");
             redName = players[rIndex];
             blueName = players[bIndex];
-            if(rIndex > 0) redSolver = getSolver(rIndex);
-            if(bIndex > 0) blueSolver = getSolver(bIndex);
+            if(rIndex == 0) {
+            	redSolver = null;
+            }
+            else {
+	            if(rIndex > 0) redSolver = getSolver(rIndex-1);
+            }
+            if(bIndex == 0) {
+            	blueSolver = null;
+            }
+            else {
+            	if(bIndex > 0) blueSolver = getSolver(bIndex-1);
+            }
             for(int i=0; i<7; i++) {
                 if(sizeButton[i].isSelected()) {
                     n = i+3;
@@ -117,7 +127,7 @@ public class Main {
         modePanel.setBackground(Color.darkGray);
         modePanel.add(new JLabel("<html><font color='red'>Player-1:", SwingConstants.CENTER));
         modePanel.add(redList);
-        redList.setSelectedIndex(2);
+        redList.setSelectedIndex(0);
         redList.setBackground(Color.DARK_GRAY);
         redList.setForeground(Color.WHITE);
         modePanel.add(new JLabel("<html><font color='blue'>Player-2:", SwingConstants.CENTER));
@@ -155,6 +165,8 @@ public class Main {
         ++constraints.gridy;
         grid.add(getEmptyLabel(new Dimension(500, 25)), constraints);
 
+        //Add button for tournament
+        
         JButton submitButton = new JButton("Start Game");
         submitButton.addActionListener(submitListener);
         ++constraints.gridy;
