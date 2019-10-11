@@ -1,4 +1,4 @@
-# Simulating Evolutionary Game Theory in a N-Player Game
+# Simulating Evolutionary Game Theory in a N-Player Population
 
 _For this study we used the game Dots-and-Boxes_
 
