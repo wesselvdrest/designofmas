@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 
 public class GamePlay {
 
-    private final static int size = 15;
+	private final static int size = 15;
     private final static int dist = 70;
 
     private int n;
@@ -256,22 +256,33 @@ public class GamePlay {
           return null;
       }
     }
-    
 
-    public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName) {
-    	agents = new CsvParser();
-    	ArrayList<Agent> list = agents.getAgents();
-        System.out.println("ArrayList before update: "+ list.get(0).getName());
-    	
-    	this.parent = parent;
-        this.frame = frame;
-        this.n = n;
-        // if none do something
-        this.redSolver = redSolver;
-        this.blueSolver = blueSolver;
-        this.redName = redName;
-        this.blueName = blueName;
-        initGame();
+    public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName, boolean tournament) {
+    	if (tournament) {
+	    	agents = new CsvParser();
+	    	ArrayList<Agent> list = agents.getAgents();
+	        System.out.println("ArrayList before update: "+ list.get(0).getName());
+	    	
+	        this.parent = parent;
+	        this.frame = frame;
+	        this.n = n;
+	        this.redSolver = getSolver(list.get(0).getStrategy());
+	        this.blueSolver = getSolver(list.get(1).getStrategy());
+	        this.redName = list.get(0).getName();
+	        this.blueName = list.get(1).getName();
+	    	initGame();
+    	}
+    	else {
+	    	this.parent = parent;
+	        this.frame = frame;
+	        this.n = n;
+	        // if none do something
+	        this.redSolver = redSolver;
+	        this.blueSolver = blueSolver;
+	        this.redName = redName;
+	        this.blueName = blueName;
+	        initGame();
+    	}
     }
 
     private boolean goBack;

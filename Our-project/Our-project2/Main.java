@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class Main {
 	
+	protected static final GamePlay GamePlay = null;
+
 	private CsvParser agents;
 
     private int n = 5;
@@ -21,7 +23,7 @@ public class Main {
     private JFrame frame;
     private JLabel modeError, sizeError;
 
-    String[] players = {"None", "Human", "Random Player", "Greedy Player", "Heuristic Player"};
+    String[] players = {"Human", "Random Player", "Greedy Player", "Heuristic Player"};
     private JRadioButton[] sizeButton;
 
     JComboBox<String> redList, blueList;
@@ -55,6 +57,7 @@ public class Main {
     }
 
     private boolean startGame;
+    private boolean startTournament;
 
     private GameSolver getSolver(int level) {
         switch(level) {
@@ -81,19 +84,51 @@ public class Main {
             	redSolver = null;
             }
             else {
-	            if(rIndex > 0) redSolver = getSolver(rIndex-1);
+	            if(rIndex > 0) redSolver = getSolver(rIndex);
             }
             if(bIndex == 0) {
             	blueSolver = null;
             }
             else {
-            	if(bIndex > 0) blueSolver = getSolver(bIndex-1);
+            	if(bIndex > 0) blueSolver = getSolver(bIndex);
             }
             for(int i=0; i<7; i++) {
                 if(sizeButton[i].isSelected()) {
                     n = i+3;
                     startGame = true;
                     return;
+                }
+            }
+            sizeError.setText("You MUST select the size of board before continuing.");
+        }
+    };
+    
+    private ActionListener tournamentButtonListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            int rIndex = redList.getSelectedIndex();
+            int bIndex = blueList.getSelectedIndex();
+            modeError.setText("");
+            redName = players[rIndex];
+            blueName = players[bIndex];
+            if(rIndex == 0) {
+            	redSolver = null;
+            }
+            else {
+	            if(rIndex > 0) redSolver = getSolver(rIndex);
+            }
+            if(bIndex == 0) {
+            	blueSolver = null;
+            }
+            else {
+            	if(bIndex > 0) blueSolver = getSolver(bIndex);
+            }
+            for(int i=0; i<7; i++) {
+                if(sizeButton[i].isSelected()) {
+                    n = i+3;
+                    startTournament = true;
+                    return;
+                    
                 }
             }
             sizeError.setText("You MUST select the size of board before continuing.");
@@ -171,9 +206,14 @@ public class Main {
         submitButton.addActionListener(submitListener);
         ++constraints.gridy;
         grid.add(submitButton, constraints);
-
-        ++constraints.gridy;
+        
         grid.add(getEmptyLabel(new Dimension(500, 25)), constraints);
+
+        
+        JButton tournamentButton = new JButton("Start Tournament");
+        tournamentButton.addActionListener(tournamentButtonListener);
+        ++constraints.gridy;
+        grid.add(tournamentButton, constraints);        
 
         frame.setContentPane(grid);
         frame.getContentPane().setBackground( Color.DARK_GRAY );
@@ -182,14 +222,16 @@ public class Main {
         frame.setVisible(true);
 
         startGame = false;
-        while(!startGame) {
+        startTournament = false;        
+    	
+        while(!startGame && !startTournament) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        new GamePlay(this, frame, n, redSolver, blueSolver, redName, blueName);
+        new GamePlay(this, frame, n, redSolver, blueSolver, redName, blueName, startTournament);
     }
 
     public static void main(String[] args) {
