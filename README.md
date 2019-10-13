@@ -25,7 +25,7 @@ A step by step overview of how to get the development environment running.
 The first step is to clone the file “Our Project”
 
 ```
-git clone FILL IN HERE
+git clone https://github.com/wesselvdrest/group_B11_designofmas.git
 ```
 
 Load the code into your Java IDE of choice. For example, in Eclipse 2019-09, go to "File" -> "Open projects from file system" and then select the Folder `Our-project/Our-project` which contains the (hidden) file `.project`.
