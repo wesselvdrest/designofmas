@@ -15,7 +15,7 @@ What things you need to install the software and how to install them
 - A program like that runs Java files, like Eclipse
 
 ```
-[Download latest version of Java here](https://www.java.com/en/download/)
+[Download latest version of Java here](https://www.java.com/en/download/) |
 [Download latest version of Eclipse here](https://www.eclipse.org/downloads/)
 
 ### Installing
