@@ -42,44 +42,29 @@ To follow how the population evolves, a tournament was designed. There are 50 ag
 ## File Details
 In this section all files have been listed in alphabetical order and detailing which files are ours, which files are edited, and which files were taken from elsewhere and didn't change.
 
-File Name | Description
+File Name | Details
 ------------ | -------------
 .classpath |	Test
 .gitignore |	Test
 .project |	Test
-Agent.class |	Test
 Agent.java |	Test
 agents.csv |	Test
-Board.class |	Test
 Board.java |	Test
-CsvParser.class |	Test
 CsvParser.java |	Test
 dot.png |	Test
-Edge.class |	Test
 Edge.java |	Test
-GamePlay.class |	Test
 GamePlay.java |	Test
-GamePlay$1.class |	Test
-GamePlay$2.class |	Test
-GameSolver.class |	Test
 GameSolver.java |	Test
-GreedySolver.class |	Test
 GreedySolver.java |	Test
-Main.class |	Test
 Main.java |	Test
-Main$1.class |	Test
-Pair.class |	Test
 Pair.java |	Test
-RandomSolver.class |	Test
 RandomSolver.java |	Test
 results |	Test
 SolverGreedy.java |	Test
 SolverHeuristic.java |	Test
 SolverRandom.java |	Test
-TestProgram.class |	Test
 TestProgram.java |	Test
 title.png |	Test
-TreeNode.class |	Test
 TreeNode.java |	Test
 
 ## Authors
