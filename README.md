@@ -42,30 +42,30 @@ To follow how the population evolves, a tournament was designed. There are 50 ag
 ## File Details
 In this section all files have been listed in alphabetical order and detailing which files are ours, which files are edited, and which files were taken from elsewhere and didn't change.
 
-File Name | Details
------------- | -------------
-.classpath |	Test
-.gitignore |	Test
-.project |	Test
-Agent.java |	Test
-agents.csv |	Test
-Board.java |	Test
-CsvParser.java |	Test
-dot.png |	Test
-Edge.java |	Test
-GamePlay.java |	Test
-GameSolver.java |	Test
-GreedySolver.java |	Test
-Main.java |	Test
-Pair.java |	Test
-RandomSolver.java |	Test
-results |	Test
-SolverGreedy.java |	Test
-SolverHeuristic.java |	Test
-SolverRandom.java |	Test
-TestProgram.java |	Test
-title.png |	Test
-TreeNode.java |	Test
+File Name |	Description
+------------ | 	-------------
+.classpath |	Write description here.
+.gitignore |	Write description here.
+.project |	Write description here.
+Agent.java |	Write description here.
+agents.csv |	Write description here.
+Board.java |	Write description here.
+CsvParser.java |	Write description here.
+dot.png |	Write description here.
+Edge.java |	Write description here.
+GamePlay.java |	Write description here.
+GameSolver.java |	Write description here.
+GreedySolver.java |	Write description here.
+Main.java |	Write description here.
+Pair.java |	Write description here.
+RandomSolver.java |	Write description here.
+results |	Write description here.
+SolverGreedy.java |	Write description here.
+SolverHeuristic.java |	Write description here.
+SolverRandom.java |	Write description here.
+TestProgram.java |	Write description here.
+title.png |	Write description here.
+TreeNode.java |	Write description here.
 
 ## Authors
 
