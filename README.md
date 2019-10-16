@@ -36,6 +36,52 @@ Run
 
 You know you can succesfully run the program in its current stage if you can select different playing strategies from 2 players. Then, let the games begin!
 
+## Tournament
+To follow how the population evolves, a tournament was designed. There are 50 agents that belong to 5 teams. Each team plays a different strategy, in which two agents from opposing teams play against each other in a one-on-one battle. The strategies are considered to be heuristics such as deciding randomly and with greed. Gradually, as the tournament progresses, the population will evolve. This occurs due to the losing agent taking over a winning agent’s strategy. The tournament will end with one of the following three states: one overall winning strategy, a close tie or continuously varying outcomes. Thus, the tournament is a way to facilitate the evolution of our population.
+
+## File Details
+In this section all files have been listed in alphabetical order and detailing which files are ours, which files are edited, and which files were taken from elsewhere and didn't change.
+
+File Name | Description
+------------ | -------------
+.classpath |	Test
+.gitignore |	Test
+.project |	Test
+Agent.class |	Test
+Agent.java |	Test
+agents.csv |	Test
+Board.class |	Test
+Board.java |	Test
+CsvParser.class |	Test
+CsvParser.java |	Test
+dot.png |	Test
+Edge.class |	Test
+Edge.java |	Test
+GamePlay.class |	Test
+GamePlay.java |	Test
+GamePlay$1.class |	Test
+GamePlay$2.class |	Test
+GameSolver.class |	Test
+GameSolver.java |	Test
+GreedySolver.class |	Test
+GreedySolver.java |	Test
+Main.class |	Test
+Main.java |	Test
+Main$1.class |	Test
+Pair.class |	Test
+Pair.java |	Test
+RandomSolver.class |	Test
+RandomSolver.java |	Test
+results |	Test
+SolverGreedy.java |	Test
+SolverHeuristic.java |	Test
+SolverRandom.java |	Test
+TestProgram.class |	Test
+TestProgram.java |	Test
+title.png |	Test
+TreeNode.class |	Test
+TreeNode.java |	Test
+
 ## Authors
 
 * **Han Havinga** - *s2657139*
