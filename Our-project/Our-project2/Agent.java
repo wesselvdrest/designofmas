@@ -25,6 +25,10 @@ public class Agent {
 	public void setAmountPlayed(int amountPlayed) {
 		this.amountPlayed = amountPlayed;
 	}
+	
+	public void incrementAmountPlayed() {
+		this.amountPlayed++;
+	}	
 
 	public String getStrategy() {
 		return strategy;

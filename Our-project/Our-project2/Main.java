@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 // since it was an interesting strategy to add to our own strategies
 import java.util.ArrayList;
 
+
 public class Main {
 	
 	protected static final GamePlay GamePlay = null;
@@ -17,6 +18,8 @@ public class Main {
 	private CsvParser agents;
 
     private int n = 5;
+    private int amountOfPlayers = 10;
+    private int epochs = 10;
     private GameSolver redSolver, blueSolver;
     private String redName, blueName;
 
@@ -92,12 +95,10 @@ public class Main {
             else {
             	if(bIndex > 0) blueSolver = getSolver(bIndex);
             }
-            for(int i=0; i<7; i++) {
-                if(sizeButton[i].isSelected()) {
-                    n = i+3;
-                    startGame = true;
-                    return;
-                }
+            System.out.println("N: "+ n);
+            if(n > 0) {
+                startGame = true;
+                return;
             }
             sizeError.setText("You MUST select the size of board before continuing.");
         }
@@ -123,13 +124,11 @@ public class Main {
             else {
             	if(bIndex > 0) blueSolver = getSolver(bIndex);
             }
-            for(int i=0; i<7; i++) {
-                if(sizeButton[i].isSelected()) {
-                    n = i+3;
-                    startTournament = true;
-                    return;
-                    
-                }
+            System.out.println("N: "+ n);
+            if(amountOfPlayers > 0 && n > 0) {
+                startTournament = true;
+                return;
+                
             }
             sizeError.setText("You MUST select the size of board before continuing.");
         }
@@ -149,12 +148,10 @@ public class Main {
         grid.add(titleLabel, constraints);
 
         ++constraints.gridy;
-        grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
 
         modeError = new JLabel("", SwingConstants.CENTER);
         modeError.setForeground(Color.RED);
         modeError.setPreferredSize(new Dimension(500, 25));
-        ++constraints.gridy;
         grid.add(modeError, constraints);
 
         JPanel modePanel = new JPanel(new GridLayout(2, 1));
@@ -175,7 +172,7 @@ public class Main {
         grid.setBackground(Color.DARK_GRAY);
 
         ++constraints.gridy;
-        grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
+//        grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
 
         sizeError = new JLabel("", SwingConstants.CENTER);
         sizeError.setForeground(Color.RED);
@@ -183,38 +180,46 @@ public class Main {
         ++constraints.gridy;
         grid.add(sizeError, constraints);
 
+        JPanel sizePanel = new JPanel(new GridLayout(1, 3));
+        sizePanel.setPreferredSize(new Dimension(500, 20));
+        SpinnerModel boardSizeNumber = new SpinnerNumberModel(n, 3, 10, 1);
+        JSpinner boardSize = new JSpinner(boardSizeNumber);
+        sizePanel.add(new JLabel("<html><font color='white'>Select the size of the board:</font></html>"));
+        sizePanel.add(boardSize);
+        
+        JButton submitButton = new JButton("Start Game");
+        submitButton.addActionListener(submitListener);
         ++constraints.gridy;
-        JLabel messageLabel = new JLabel("<html><font color='white'>Select the size of the board:</font></html>");
-        messageLabel.setPreferredSize(new Dimension(400, 7));
-        grid.add(messageLabel, constraints);
-
-        JPanel sizePanel = new JPanel(new GridLayout(4, 2));
-        sizePanel.setPreferredSize(new Dimension(400, 100));
-        for(int i=0; i<7; i++)
-            sizePanel.add(sizeButton[i]);
+        sizePanel.add(submitButton, constraints);
         sizePanel.setBackground(Color.DARK_GRAY);
         sizeGroup.clearSelection();
         ++constraints.gridy;
         grid.add(sizePanel, constraints);
 
         ++constraints.gridy;
-        grid.add(getEmptyLabel(new Dimension(500, 25)), constraints);
-
-        //Add button for tournament
+        grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
         
-        JButton submitButton = new JButton("Start Game");
-        submitButton.addActionListener(submitListener);
-        ++constraints.gridy;
-        grid.add(submitButton, constraints);
-        
-        grid.add(getEmptyLabel(new Dimension(500, 25)), constraints);
-
-        
+        JPanel tournamentPanel = new JPanel(new GridLayout(1, 5));
+        tournamentPanel.setPreferredSize(new Dimension(700, 20));
+        tournamentPanel.setBackground(Color.darkGray);
+        tournamentPanel.add(new JLabel("<html><font color='white'>amountOfPlayers:  ", SwingConstants.CENTER));
+        SpinnerModel model1 = new SpinnerNumberModel(amountOfPlayers, 2, 100, 2);
+        amountOfPlayers = (int) model1.getValue();
+        JSpinner spinner1 = new JSpinner(model1);
+        tournamentPanel.add(spinner1);
+        tournamentPanel.add(new JLabel("<html><font color='white'>epochs:  ", SwingConstants.CENTER));
+        SpinnerModel model2 = new SpinnerNumberModel(epochs, 1, 1000, 1);
+        JSpinner spinner2 = new JSpinner(model2);
+        tournamentPanel.add(spinner2);
         JButton tournamentButton = new JButton("Start Tournament");
         tournamentButton.addActionListener(tournamentButtonListener);
+        tournamentPanel.add(tournamentButton);
+        
+        
+        grid.add(tournamentPanel, constraints);
+        grid.setBackground(Color.DARK_GRAY);   
+       
         ++constraints.gridy;
-        grid.add(tournamentButton, constraints);        
-
         frame.setContentPane(grid);
         frame.getContentPane().setBackground( Color.DARK_GRAY );
         frame.pack();
@@ -231,7 +236,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        new GamePlay(this, frame, n, redSolver, blueSolver, redName, blueName, startTournament);
+        new GamePlay(this, frame, n, redSolver, blueSolver, redName, blueName, startTournament, amountOfPlayers, epochs);
     }
 
     public static void main(String[] args) {

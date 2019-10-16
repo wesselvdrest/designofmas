@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Random; 
+import java.util.List;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,6 +23,22 @@ public class GamePlay {
     private Board board;
     private int turn;
     private boolean mouseEnabled;
+    
+	ArrayList<Agent> list;
+	private int players = 0;
+	private int epochs = 0;
+    private int agent1;
+    private int agent2;
+    private boolean tournament;
+    private int agentNumber = 0;
+    private int totalGames = 0;
+    private String redSolverName;
+    private String blueSolverName;
+    private int randomAmount = 0;
+    private int greedyAmount = 0;
+    private int heuristicsAmount = 0;
+    
+    
     
     private CsvParser agents;
 
@@ -87,6 +105,20 @@ public class GamePlay {
             }
         }
     };
+    
+    private void getAmountPerStrategy(String strategy) {
+//    	System.out.println("STRATEGY: "+ strategy);
+        switch(strategy) {
+        case "random": // level == 1
+        	randomAmount++;
+        case "greedy":
+        	greedyAmount++;
+        case "heuristic":
+        	heuristicsAmount++;
+        default:
+        	
+      }
+    }
 
     private void processMove(Edge location) {
         int x=location.getX(), y=location.getY();
@@ -118,22 +150,36 @@ public class GamePlay {
 
         if(board.isComplete()) {
             int winner = board.getWinner();
+    		randomAmount = 0;
+    		greedyAmount = 0;
+    		heuristicsAmount = 0;
+            for (int i = 0; i < players; i++) {
+	    		getAmountPerStrategy(list.get(i).getStrategy());
+	    	}
             if(winner == Board.RED) {
                 statusLabel.setText( redName + " is the winner!");
                 statusLabel.setForeground(Color.RED);
-                appendUsingPrintWriter("./results/result.txt", "Winner: RED, ");
+//            	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount");
+            	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ redName + ", "+ redSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
+                list.get(agent2).setStrategy(redSolverName);
+            	System.out.println("Winner: "+ redSolverName  + " "+redName +"\t Opponent: "+ blueSolverName  + " "+blueName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
             }
             else if(winner == Board.BLUE) {
                 statusLabel.setText( blueName + " is the winner!");
                 statusLabel.setForeground(Color.BLUE);
-                appendUsingPrintWriter("./results/result.txt", "Winner: BLUE, ");
+            	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ blueName + ", "+ blueSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
+            	list.get(agent1).setStrategy(blueSolverName);
+            	System.out.println("Winner: "+ blueSolverName  + " "+blueName +"\t Opponent: "+ redSolverName  + " "+redName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
             }
             else {
                 statusLabel.setText("Game Tied!");
                 statusLabel.setForeground(Color.BLACK);
-                appendUsingPrintWriter("./results/result.txt", "Winner: TIE, ");
+            	appendUsingPrintWriter("./results/result.txt", totalGames + ", None, None, "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
+            	System.out.println("Winner: NONE \t Opponent: NONE \t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
             }
-//            initGame(); //Comment out to only see one round
+            if (tournament) {
+            	initGame();
+            }
         }
 
         if(ret.isEmpty()) {
@@ -257,20 +303,20 @@ public class GamePlay {
       }
     }
 
-    public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName, boolean tournament) {
+    public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName, boolean tournament, int players, int epochs) {
+    	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount");
+    	this.tournament = tournament;
+		System.out.println("=======PLAYERS===========" + players);
+
     	if (tournament) {
-	    	agents = new CsvParser();
-	    	ArrayList<Agent> list = agents.getAgents();
-	        System.out.println("ArrayList before update: "+ list.get(0).getName());
-	    	
-	        this.parent = parent;
+    		agents = new CsvParser();
+    		list = agents.getAgents();
+    		this.parent = parent;
+    		this.players = players;
 	        this.frame = frame;
+	        this.epochs = epochs;
 	        this.n = n;
-	        this.redSolver = getSolver(list.get(0).getStrategy());
-	        this.blueSolver = getSolver(list.get(1).getStrategy());
-	        this.redName = list.get(0).getName();
-	        this.blueName = list.get(1).getName();
-	    	initGame();
+    		initGame();
     	}
     	else {
 	    	this.parent = parent;
@@ -295,6 +341,41 @@ public class GamePlay {
     };
 
     private void initGame() {
+    	if (tournament) {
+    		
+	        ArrayList<Agent> subAgents = new ArrayList<Agent>();
+	        List<Integer> subAgentsInt = new ArrayList<Integer>();
+    		System.out.println("=====PLAYERS" + players);
+
+	    	for (int i = 0; i < players; i++) {
+	    	    if (list.get(i).getAmountPlayed() == totalGames) {
+	    	    	subAgentsInt.add(i);
+	    	    	subAgents.add(list.get(i));
+	    	    }
+	    	}
+	    	if (subAgents.isEmpty()) {
+	    		System.out.println("==================");
+	    		System.out.println("==================");
+	    		totalGames++;
+	    		initGame();
+	    	}
+	    	Random rand = new Random(); 
+	    	int rnd = rand.nextInt(subAgents.size());
+	    	int rnd2 = rand.nextInt(subAgents.size());
+	    	while (rnd2 == rnd) {
+	    		rnd2 = rand.nextInt(subAgents.size());
+	    	}
+	    	agent1 = subAgentsInt.get(rnd);
+	    	agent2 = subAgentsInt.get(rnd2);
+	        this.redSolverName = list.get(agent1).getStrategy();
+	        this.redSolver = getSolver(redSolverName);
+	        this.blueSolverName = list.get(agent2).getStrategy();
+	        this.blueSolver = getSolver(blueSolverName);
+	        this.redName = list.get(agent1).getName();
+	        this.blueName = list.get(agent2).getName();
+	        list.get(agent1).incrementAmountPlayed();
+	        list.get(agent2).incrementAmountPlayed();
+    	}
 
         board = new Board(n);
         int boardWidth = n * size + (n-1) * dist;
@@ -308,13 +389,20 @@ public class GamePlay {
         grid.add(getEmptyLabel(new Dimension(2 * boardWidth, 10)), constraints);
         grid.setBackground(Color.DARK_GRAY);
         
-        JPanel playerPanel = new JPanel(new GridLayout(2, 2));
+        JPanel playerPanel = new JPanel(new GridLayout(3, 3));
         if(n>3) playerPanel.setPreferredSize(new Dimension(2 * boardWidth, dist));
         else playerPanel.setPreferredSize(new Dimension(2 * boardWidth, 2 * dist));
-        playerPanel.add(new JLabel("<html><font color='red'>Player-1:", SwingConstants.CENTER));
-        playerPanel.add(new JLabel("<html><font color='blue'>Player-2:", SwingConstants.CENTER));
-        playerPanel.add(new JLabel("<html><font color='red'>" + redName, SwingConstants.CENTER));
-        playerPanel.add(new JLabel("<html><font color='blue'>" + blueName, SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>Player-1:", SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>Game:", SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>Player-2:", SwingConstants.CENTER));
+        
+        playerPanel.add(new JLabel("<html><font color='white'>" + redName, SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>"+ totalGames, SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>" + blueName, SwingConstants.CENTER));
+        
+        playerPanel.add(new JLabel("<html><font color='white'>" + redSolverName, SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>", SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>" + blueSolverName, SwingConstants.CENTER));
         playerPanel.setBackground(Color.DARK_GRAY);
         ++constraints.gridy;
         grid.add(playerPanel, constraints);
@@ -324,13 +412,13 @@ public class GamePlay {
 
         JPanel scorePanel = new JPanel(new GridLayout(2, 2));
         scorePanel.setPreferredSize(new Dimension(2 * boardWidth, dist));
-        scorePanel.add(new JLabel("<html><font color='red'>Score:", SwingConstants.CENTER));
-        scorePanel.add(new JLabel("<html><font color='blue'>Score:", SwingConstants.CENTER));
+        scorePanel.add(new JLabel("<html><font color='white'>Score:", SwingConstants.CENTER));
+        scorePanel.add(new JLabel("<html><font color='white'>Score:", SwingConstants.CENTER));
         redScoreLabel = new JLabel("0", SwingConstants.CENTER);
-        redScoreLabel.setForeground(Color.RED);
+        redScoreLabel.setForeground(Color.WHITE);
         scorePanel.add(redScoreLabel);
         blueScoreLabel = new JLabel("0", SwingConstants.CENTER);
-        blueScoreLabel.setForeground(Color.BLUE);
+        blueScoreLabel.setForeground(Color.WHITE);
         scorePanel.add(blueScoreLabel);
         scorePanel.setBackground(Color.DARK_GRAY);
         ++constraints.gridy;
