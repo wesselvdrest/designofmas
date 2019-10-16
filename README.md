@@ -36,6 +36,37 @@ Run
 
 You know you can succesfully run the program in its current stage if you can select different playing strategies from 2 players. Then, let the games begin!
 
+## Tournament
+To follow how the population evolves, a tournament was designed. There are 50 agents that belong to 5 teams. Each team plays a different strategy, in which two agents from opposing teams play against each other in a one-on-one battle. The strategies are considered to be heuristics such as deciding randomly and with greed. Gradually, as the tournament progresses, the population will evolve. This occurs due to the losing agent taking over a winning agent’s strategy. The tournament will end with one of the following three states: one overall winning strategy, a close tie or continuously varying outcomes. Thus, the tournament is a way to facilitate the evolution of our population.
+
+## File Details
+In this section all files have been listed in alphabetical order and detailing which files are ours, which files are edited, and which files were taken from elsewhere and didn't change.
+
+File Name |	Description
+------------ | 	-------------
+.classpath |	Write description here.
+.gitignore |	Write description here.
+.project |	Write description here.
+Agent.java |	Write description here.
+agents.csv |	Write description here.
+Board.java |	Write description here.
+CsvParser.java |	Write description here.
+dot.png |	Write description here.
+Edge.java |	Write description here.
+GamePlay.java |	Write description here.
+GameSolver.java |	Write description here.
+GreedySolver.java |	Write description here.
+Main.java |	Write description here.
+Pair.java |	Write description here.
+RandomSolver.java |	Write description here.
+results |	Write description here.
+SolverGreedy.java |	Write description here.
+SolverHeuristic.java |	Write description here.
+SolverRandom.java |	Write description here.
+TestProgram.java |	Write description here.
+title.png |	Write description here.
+TreeNode.java |	Write description here.
+
 ## Authors
 
 * **Han Havinga** - *s2657139*
