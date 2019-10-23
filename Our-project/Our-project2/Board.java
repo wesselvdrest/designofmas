@@ -24,7 +24,7 @@ public class Board implements Cloneable {
         fill(vEdge,BLANK);
         fill(box,BLANK);
         this.n = n;
-        redScore = blueScore = greenScore = 0;
+        redScore = blueScore = 0;
     }
 
     public Board clone() {
@@ -44,7 +44,6 @@ public class Board implements Cloneable {
 
         cloned.redScore = redScore;
         cloned.blueScore = blueScore;
-        cloned.greenScore = greenScore;
 
         return cloned;
     }
@@ -64,22 +63,15 @@ public class Board implements Cloneable {
     public int getBlueScore() {
         return blueScore;
     }
-    
-    public int getGreenScore() {
-        return greenScore;
-    }
 
     public int getScore(int color) {
         if(color == RED) return redScore;
-        else if(color == BLUE) return blueScore;
-        else return greenScore;
+        else return blueScore;
     }
 
     public static int toggleColor(int color) {
         if(color == RED)
             return BLUE;
-        else if(color == BLUE)
-            return GREEN;
         else
             return RED;
     }
@@ -104,15 +96,13 @@ public class Board implements Cloneable {
             box[x][y]=color;
             ret.add(new Point(x,y));
             if(color == RED) redScore++;
-            else if(color == BLUE) blueScore++;
-            else greenScore++;
+            else blueScore++;
         }
         if(y>0 && vEdge[x][y-1]==BLACK && vEdge[x+1][y-1]==BLACK && hEdge[x][y-1]==BLACK) {
             box[x][y-1]=color;
             ret.add(new Point(x,y-1));
             if(color == RED) redScore++;
-            else if(color == BLUE) blueScore++;
-            else greenScore++;
+            else blueScore++;
         }
         return ret;
     }
@@ -124,27 +114,24 @@ public class Board implements Cloneable {
             box[x][y]=color;
             ret.add(new Point(x,y));
             if(color == RED) redScore++;
-            else if(color == BLUE) blueScore++;
-            else greenScore++;
+            else blueScore++;
         }
         if(x>0 && hEdge[x-1][y]==BLACK && hEdge[x-1][y+1]==BLACK && vEdge[x-1][y]==BLACK) {
             box[x-1][y]=color;
             ret.add(new Point(x-1,y));
             if(color == RED) redScore++;
-            else if(color == BLUE) blueScore++;
-            else greenScore++;
+            else blueScore++;
         }
         return ret;
     }
 
     public boolean isComplete() {
-        return (redScore + blueScore + greenScore) == (n - 1) * (n - 1);
+        return (redScore + blueScore) == (n - 1) * (n - 1);
     }
 
     public int getWinner() {
-        if(redScore > blueScore && redScore > greenScore) return RED;
-        else if(blueScore > redScore && blueScore > greenScore) return BLUE;
-        else if(greenScore > redScore && greenScore > blueScore) return GREEN;
+        if(redScore > blueScore) return RED;
+        else if(blueScore > redScore) return BLUE;
         else return BLANK;
     }
 
