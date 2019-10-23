@@ -37,6 +37,8 @@ public class GamePlay {
     private int randomAmount = 0;
     private int greedyAmount = 0;
     private int heuristicsAmount = 0;
+    private int test = 1;
+    private boolean endTournament = false;
     
     
     
@@ -111,13 +113,16 @@ public class GamePlay {
         switch(strategy) {
         case "random": // level == 1
         	randomAmount++;
+        	break;
         case "greedy":
         	greedyAmount++;
+        	break;
         case "heuristic":
         	heuristicsAmount++;
+        	break;
         default:
-        	
-      }
+        	break;
+        }
     }
 
     private void processMove(Edge location) {
@@ -306,7 +311,6 @@ public class GamePlay {
     public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName, boolean tournament, int players, int epochs) {
     	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount");
     	this.tournament = tournament;
-		System.out.println("=======PLAYERS===========" + players);
 
     	if (tournament) {
     		agents = new CsvParser();
@@ -345,7 +349,6 @@ public class GamePlay {
     		
 	        ArrayList<Agent> subAgents = new ArrayList<Agent>();
 	        List<Integer> subAgentsInt = new ArrayList<Integer>();
-    		System.out.println("=====PLAYERS" + players);
 
 	    	for (int i = 0; i < players; i++) {
 	    	    if (list.get(i).getAmountPlayed() == totalGames) {
@@ -357,6 +360,36 @@ public class GamePlay {
 	    		System.out.println("==================");
 	    		System.out.println("==================");
 	    		totalGames++;
+	    		randomAmount = 0;
+	    		greedyAmount = 0;
+	    		heuristicsAmount = 0;
+	    		for (int i = 0; i < players; i++) {
+		    		getAmountPerStrategy(list.get(i).getStrategy());
+		    	}
+	    		if (randomAmount == players) {
+	    			endTournament = true;
+	    		}
+	    		else if (greedyAmount == players) {
+	    			endTournament = true;
+	    		}
+	    		else if (heuristicsAmount == players) {
+	    			endTournament = true;
+	    		}
+	    	
+	    		if (endTournament) {
+	    			File directory=new File("./results");
+	    		    int fileCount=directory.list().length;
+		    		System.out.println("=====FILECOUNT=============" + fileCount);
+	    			File oldfile =new File("./results/result.txt");
+	    			File newfile =new File("./results/Tournament_" + fileCount + ".txt");
+	    			System.out.println("=====NEWFILE=============" + newfile);
+	    			if(oldfile.renameTo(newfile)){
+	    				System.out.println("Rename succesful");
+	    			}else{
+	    				System.out.println("Rename failed");
+	    			}
+	    			parent.initGUI();
+	    		}
 	    		initGame();
 	    	}
 	    	Random rand = new Random(); 
@@ -389,7 +422,7 @@ public class GamePlay {
         grid.add(getEmptyLabel(new Dimension(2 * boardWidth, 10)), constraints);
         grid.setBackground(Color.DARK_GRAY);
         
-        JPanel playerPanel = new JPanel(new GridLayout(3, 3));
+        JPanel playerPanel = new JPanel(new GridLayout(4, 3));
         if(n>3) playerPanel.setPreferredSize(new Dimension(2 * boardWidth, dist));
         else playerPanel.setPreferredSize(new Dimension(2 * boardWidth, 2 * dist));
         playerPanel.add(new JLabel("<html><font color='white'>Player-1:", SwingConstants.CENTER));
@@ -403,6 +436,10 @@ public class GamePlay {
         playerPanel.add(new JLabel("<html><font color='white'>" + redSolverName, SwingConstants.CENTER));
         playerPanel.add(new JLabel("<html><font color='white'>", SwingConstants.CENTER));
         playerPanel.add(new JLabel("<html><font color='white'>" + blueSolverName, SwingConstants.CENTER));
+        
+        playerPanel.add(new JLabel("<html><font color='red'>||||||||||||||||", SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='white'>", SwingConstants.CENTER));
+        playerPanel.add(new JLabel("<html><font color='blue'>||||||||||||||||", SwingConstants.CENTER));
         playerPanel.setBackground(Color.DARK_GRAY);
         ++constraints.gridy;
         grid.add(playerPanel, constraints);
