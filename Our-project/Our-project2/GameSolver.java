@@ -8,11 +8,9 @@ public abstract class GameSolver {
     protected int heuristic(final Board board, int color) {
         int value;
         if(referenceColor == Board.RED)
-            value = cScore * board.getRedScore() - cScore * board.getBlueScore() - cScore * board.getGreenScore();
-        else if(referenceColor == Board.BLUE)
-            value = cScore * board.getBlueScore() - cScore * board.getRedScore()- cScore * board.getGreenScore();
-        else
-        	value = cScore * board.getGreenScore() - cScore * board.getRedScore() - cScore * board.getBlueScore();
+            value = cScore * board.getRedScore() - cScore * board.getBlueScore();
+        else 
+            value = cScore * board.getBlueScore() - cScore * board.getRedScore();
         if(referenceColor == color)
             value += cThree * board.getBoxCount(3) - cTwo * board.getBoxCount(2);
         else
