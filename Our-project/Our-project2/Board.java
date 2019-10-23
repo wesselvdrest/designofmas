@@ -6,7 +6,6 @@ public class Board implements Cloneable {
 
     final static int RED = 0;
     final static int BLUE = 1;
-    final static int GREEN = 2;
     final static int BLACK = 3;
     final static int BLANK = 4;
 
@@ -14,7 +13,7 @@ public class Board implements Cloneable {
     private int[][] hEdge;
     private int[][] vEdge;
     private int[][] box;
-    private int n, redScore, blueScore, greenScore;
+    private int n, redScore, blueScore;
 
     public Board(int n) {
         hEdge = new int[n-1][n];
