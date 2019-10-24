@@ -2,3 +2,26 @@ Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrateg
 Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
 Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
 0, Coleman, heuristic, Coleman, Julian, heuristic, heuristic, 42, 14, 14
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, David, random, Jay, David, random, random, 42, 14, 14
+0, Kermit, greedy, Kermit, Andres, greedy, random, 42, 14, 14
+0, Sonny, heuristic, Sonny, Sachiko, heuristic, greedy, 41, 15, 14
+0, Lisa, random, Jeremy, Lisa, random, random, 41, 14, 15
+0, Earl, heuristic, Earl, Robby, heuristic, random, 41, 14, 15
+0, Merlin, heuristic, Merlin, Ellyn, heuristic, random, 40, 14, 16
+0, Jewel, greedy, Jewel, Stacey, greedy, random, 39, 14, 17
+0, Errol, random, Gerry, Errol, random, random, 38, 15, 17
+0, Maura, greedy, Franklin, Maura, random, greedy, 38, 15, 17
+0, None, None, Dong, Andy, random, random, 37, 16, 17
+0, Rudolph, greedy, Rudolph, Lorretta, greedy, random, 37, 16, 17
+0, Coleman, heuristic, Coleman, Thurman, heuristic, greedy, 36, 17, 17
+0, Fallon, random, Fallon, Sammy, random, random, 36, 16, 18
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, None, None, Human, Greedy Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Greedy Player, null, Greedy Player, Greedy Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Greedy Player, null, Greedy Player, Greedy Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Greedy Player, null, Random Player, Greedy Player, null, null, 0, 0, 0

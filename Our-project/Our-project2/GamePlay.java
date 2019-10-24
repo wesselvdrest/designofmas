@@ -155,25 +155,31 @@ public class GamePlay {
 
         if(board.isComplete()) {
             int winner = board.getWinner();
-    		randomAmount = 0;
-    		greedyAmount = 0;
-    		heuristicsAmount = 0;
-            for (int i = 0; i < players; i++) {
-	    		getAmountPerStrategy(list.get(i).getStrategy());
-	    	}
+            if (tournament) {
+	    		randomAmount = 0;
+	    		greedyAmount = 0;
+	    		heuristicsAmount = 0;
+	            for (int i = 0; i < players; i++) {
+		    		getAmountPerStrategy(list.get(i).getStrategy());
+		    	}
+            }
             if(winner == Board.RED) {
                 statusLabel.setText( redName + " is the winner!");
                 statusLabel.setForeground(Color.RED);
 //            	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount");
             	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ redName + ", "+ redSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
-                list.get(agent2).setStrategy(redSolverName);
+            	if (tournament) {
+            		list.get(agent2).setStrategy(redSolverName);
+            	}
             	System.out.println("Winner: "+ redSolverName  + " "+redName +"\t Opponent: "+ blueSolverName  + " "+blueName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
             }
             else if(winner == Board.BLUE) {
                 statusLabel.setText( blueName + " is the winner!");
                 statusLabel.setForeground(Color.BLUE);
             	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ blueName + ", "+ blueSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
-            	list.get(agent1).setStrategy(blueSolverName);
+            	if (tournament) {
+            		list.get(agent1).setStrategy(blueSolverName);
+            	}
             	System.out.println("Winner: "+ blueSolverName  + " "+blueName +"\t Opponent: "+ redSolverName  + " "+redName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
             }
             else {
@@ -346,7 +352,7 @@ public class GamePlay {
 
     private void initGame() {
     	if (tournament) {
-    		
+
 	        ArrayList<Agent> subAgents = new ArrayList<Agent>();
 	        List<Integer> subAgentsInt = new ArrayList<Integer>();
 
