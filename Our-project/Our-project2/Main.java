@@ -28,7 +28,7 @@ public class Main {
     private JFrame frame;
     private JLabel modeError, sizeError;
 
-    String[] players = {"Human", "Random Player", "Greedy Player", "Heuristic Player"};
+    String[] players = {"Human", "Random Player", "Greedy Player", "Heuristic Player", "ShortestChain Player"};
     private JRadioButton[] sizeButton;
 
     JComboBox<String> redList, blueList;
@@ -72,6 +72,8 @@ public class Main {
         	return new SolverGreedy();
         case 3:
         	return new SolverHeuristic();
+        case 4:
+        	return new SolverShortestChain();
         default:
           return null;
       }

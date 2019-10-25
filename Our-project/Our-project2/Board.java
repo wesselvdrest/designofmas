@@ -87,6 +87,27 @@ public class Board implements Cloneable {
                     ret.add(new Edge(i,j,false));
         return ret;
     }
+    
+    public ArrayList<Edge> getAvailableMoves(ArrayList<Point> Boxes) { //Get available moves of given boxes
+        ArrayList<Edge> ret = new ArrayList<Edge>();
+		for(Point box : Boxes){ // check for all boxes which edges are still empty and add to ret if true
+			int x = (int)box.getX();
+			int y = (int)box.getY();
+			if(hEdge[x][y] == BLANK){
+				ret.add(new Edge(x,y,true));
+			}
+			if(hEdge[x][y+1] == BLANK){
+				ret.add(new Edge(x,y+1,true));
+			}
+			if(vEdge[x][y] == BLANK){
+				ret.add(new Edge(x,y,false));
+			}
+			if(vEdge[x+1][y] == BLANK){
+				ret.add(new Edge(x+1,y,false));
+			}
+		}
+        return ret;
+    }
 
     public ArrayList<Point> setHEdge(int x, int y, int color) {
         hEdge[x][y]=BLACK;
@@ -161,5 +182,343 @@ public class Board implements Cloneable {
             }
         return count;
     }
+	public ArrayList<Point> getShortestChain() {
+		ArrayList<Point> blackList = new ArrayList<Point>(); //these boxes have already been considered
+		ArrayList<Point> Chain = new ArrayList<Point>(); // array for chain coordinates
+		ArrayList<Point> ShortestChains = new ArrayList<Point>(); // array for chain coordinates
+		Point coordinate = new Point();
+		int sizeShortest = 64;
+		for(int i=0; i<(n-1); i++) { //loop over all boxes of the board
+            for(int j=0; j<(n-1); j++) {
+				boolean blacklisted = false;
+				coordinate = new Point(i,j);
+				
+				if (!(box[i][j] == BLANK)) { // colored boxes are excluded from count
+					blackList.add(coordinate); 
+					continue;
+				}
+				for(Point pt : blackList) { // check whether this box has already been considered
+					if(coordinate.equals(pt)){
+						blacklisted = true;
+						break;
+					}
+				}
+				if(blacklisted) continue;
+				blackList.add(coordinate); //blacklist all boxes that have been considered
+				Chain.add(coordinate);
+				int size = Chain.size()-1;
+				Point neighbour= new Point();
+				while(Chain.size() != size){ // look at the neighbours without walls in between, add to Chain untill no new neighbours are added
+					size = Chain.size();
+					ArrayList<Point> Temp = new ArrayList<Point>(); // Array for temporary storing coordinates to add to the chain
+					for(Point crd : Chain){
+						int x = (int)crd.getX();
+						int y = (int)crd.getY();
+						//for all edges check wheter the edge is not a border and edge is not filled in (blank)
+						
+						//Horizontal edge above, neighbour at coordinates (x, y-1):
+						if(y>0 && hEdge[x][y] == BLANK){ 
+							neighbour = new Point(x, (y-1));
+							boolean bl = false;
+							for(Point pt : blackList) { // check whether this box has already been considered
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){ // if this box has not been considered before, add it to the chain and blacklist it
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						 //Same for Horizontal edge below, (((might break on N))), neighbour at coordinates (x, y+1):
+						if(y<n-2 && hEdge[x][y+1] == BLANK){
+							neighbour = new Point(x, (y+1));
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						//Same for Vertical edge left, neighbour at coordinates (x-1, y):
+						if(x>0 && vEdge[x][y] == BLANK){ 
+							neighbour = new Point((x-1), y);
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						//Same for Vertical edge right, neighbour at coordinates (x+1, y):
+						if(x<(n-2) && vEdge[x+1][y] == BLANK){ 
+							neighbour = new Point((x+1), y);
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+					}
+					for(Point tp : Temp){
+						Chain.add(tp);
+					}
+					Temp.clear();
+				}
+				if(Chain.size() == sizeShortest){ //if this is also one of the shortest chains, add to the shortestChains
+					for(Point crd : Chain){
+						ShortestChains.add(crd);
+					}
+				}
+				if(Chain.size() < sizeShortest){ //we found a shorter chain
+					sizeShortest = Chain.size();
+					ShortestChains.clear();
+					for(Point crd : Chain){
+						ShortestChains.add(crd);
+					}
+				} 
+//				System.out.println("Final Chain" + ShortestChains);
+				Chain.clear();
+            }
+		} 
+		return ShortestChains;
+	}
+	
+	public ArrayList<Point> getDiadCoordinates() {
+		ArrayList<Point> blackList = new ArrayList<Point>(); //these boxes have already been considered
+		ArrayList<Point> Chain = new ArrayList<Point>(); // array for chain coordinates
+		ArrayList<Point> diadChains = new ArrayList<Point>();
+		Point coordinate = new Point();
+		for(int i=0; i<(n-1); i++) { //loop over all boxes of the board
+            for(int j=0; j<(n-1); j++) {
+				boolean blacklisted = false;
+				coordinate = new Point(i,j);
+				if (!(box[i][j] == BLANK)) { // colored boxes are excluded from count
+					blackList.add(coordinate); 
+					continue;
+				}
+				for(Point pt : blackList) { // check whether this box has already been considered
+					if(coordinate.equals(pt)){
+						blacklisted = true;
+						break;
+					}
+				}
+				if(blacklisted) continue;
+				blackList.add(coordinate); //blacklist all boxes that have been considered
+				Chain.add(coordinate);
+				int size = Chain.size()-1;
+				Point neighbour= new Point();
+				// look at the neighbours without walls in between, add to Chain untill no new neighbours are added or 
+				// the chain has become longer than 2 (since we only want to collect chains that are 2 boxes long)
+				while(Chain.size() != size){ 
+					size = Chain.size();
+					ArrayList<Point> Temp = new ArrayList<Point>(); // Array for temporary storing coordinates to add to the chain
+					for(Point crd : Chain){
+						int x = (int)crd.getX();
+						int y = (int)crd.getY();
+						
+						//for all edges check wheter the edge is not a border and edge is not filled in (blank)
 
+						//Horizontal edge above, neighbour at coordinates (x, y-1):
+						if(y>0 && hEdge[x][y] == BLANK){ 
+							neighbour = new Point(x, (y-1));
+							boolean bl = false;
+							for(Point pt : blackList) { // check whether this box has already been considered
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){ // if this box has not been considered before, add it to the chain and blacklist it
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						 //Same for Horizontal edge below, (((might break on N))), neighbour at coordinates (x, y+1):
+						if(y<n-2 && hEdge[x][y+1] == BLANK){
+							neighbour = new Point(x, (y+1));
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						//Same for Vertical edge left, neighbour at coordinates (x-1, y):
+						if(x>0 && vEdge[x][y] == BLANK){ 
+							neighbour = new Point((x-1), y);
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						//Same for Vertical edge right, neighbour at coordinates (x+1, y):
+						if(x<(n-2) && vEdge[x+1][y] == BLANK){ 
+							neighbour = new Point((x+1), y);
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+					}
+					for(Point tp : Temp){
+						Chain.add(tp);
+					}
+					Temp.clear();
+				}
+				if(Chain.size() == 2){
+					for(Point crd : Chain){
+						diadChains.add(crd);
+					}
+				}
+//				System.out.println("Final Chain" + diadChains);
+				Chain.clear();
+            }
+		} 
+		return diadChains;
+	}
+	
+public int[] getChainCount() {
+		int[] Histogram = new int[64]; //Initializes at zero. Size of largest board (cannot have a chain longer than that)
+		ArrayList<Point> blackList = new ArrayList<Point>(); //these boxes have already been considered
+		ArrayList<Point> Chain = new ArrayList<Point>(); // array for chain coordinates
+		Point coordinate = new Point();
+		for(int i=0; i<(n-1); i++) { //loop over all boxes of the board
+            for(int j=0; j<(n-1); j++) {
+				boolean blacklisted = false;
+				coordinate = new Point(i,j);
+				if (!(box[i][j] == BLANK)) { // colored boxes are excluded from count
+					blackList.add(coordinate); 
+					continue;
+				}
+				for(Point pt : blackList) { // check whether this box has already been considered
+					if(coordinate.equals(pt)){
+						blacklisted = true;
+						break;
+					}
+				}
+				if(blacklisted) continue;
+				blackList.add(coordinate); //blacklist all boxes that have been considered
+				Chain.add(coordinate);
+				int size = Chain.size()-1;
+				Point neighbour= new Point();
+				while(Chain.size() != size){ // look at the neighbours without walls in between, add to Chain untill no new neighbours are added
+					size = Chain.size();
+					ArrayList<Point> Temp = new ArrayList<Point>(); // Array for temporary storing coordinates to add to the chain
+					for(Point crd : Chain){
+						int x = (int)crd.getX();
+						int y = (int)crd.getY();
+						
+						//for all edges check wheter the edge is not a border and edge is not filled in (blank)
+
+						//Horizontal edge above, neighbour at coordinates (x, y-1):
+						if(y>0 && hEdge[x][y] == BLANK){ 
+							neighbour = new Point(x, (y-1));
+							boolean bl = false;
+							for(Point pt : blackList) { // check whether this box has already been considered
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){ // if this box has not been considered before, add it to the chain and blacklist it
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						 //Same for Horizontal edge below, (((might break on N))), neighbour at coordinates (x, y+1):
+						if(y<n-2 && hEdge[x][y+1] == BLANK){
+							neighbour = new Point(x, (y+1));
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						//Same for Vertical edge left, neighbour at coordinates (x-1, y):
+						if(x>0 && vEdge[x][y] == BLANK){ 
+							neighbour = new Point((x-1), y);
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+						//Same for Vertical edge right, neighbour at coordinates (x+1, y):
+						if(x<(n-2) && vEdge[x+1][y] == BLANK){ 
+							neighbour = new Point((x+1), y);
+							boolean bl = false;
+							for(Point pt : blackList) {
+								if(neighbour.equals(pt)){
+									bl = true;
+									break;
+								}
+							}
+							if(!bl){
+								Temp.add(neighbour);
+								blackList.add(neighbour);
+							}
+						}
+					}
+					for(Point tp : Temp){
+						Chain.add(tp);
+					}
+					Temp.clear();
+				}
+				Histogram[Chain.size()]++;
+//				System.out.println("Final Chain" + Chain);
+				Chain.clear();
+            }
+		} 
+		return Histogram;
+	}
+	
 }

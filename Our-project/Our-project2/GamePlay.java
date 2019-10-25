@@ -36,6 +36,7 @@ public class GamePlay {
     private String blueSolverName;
     private int randomAmount = 0;
     private int greedyAmount = 0;
+    private int shortestChainAmount = 0;
     private int heuristicsAmount = 0;
     private int test = 1;
     private boolean endTournament = false;
@@ -120,6 +121,9 @@ public class GamePlay {
         case "heuristic":
         	heuristicsAmount++;
         	break;
+        case "shortestchain":
+        	shortestChainAmount++;
+        	break;
         default:
         	break;
         }
@@ -159,6 +163,7 @@ public class GamePlay {
 	    		randomAmount = 0;
 	    		greedyAmount = 0;
 	    		heuristicsAmount = 0;
+	    		shortestChainAmount = 0;
 	            for (int i = 0; i < players; i++) {
 		    		getAmountPerStrategy(list.get(i).getStrategy());
 		    	}
@@ -309,6 +314,8 @@ public class GamePlay {
         	return new SolverGreedy();
         case "heuristic":
         	return new SolverHeuristic();
+        case "shortestchain":
+        	return new SolverShortestChain();
         default:
           return null;
       }
@@ -369,6 +376,7 @@ public class GamePlay {
 	    		randomAmount = 0;
 	    		greedyAmount = 0;
 	    		heuristicsAmount = 0;
+	    		shortestChainAmount = 0;
 	    		for (int i = 0; i < players; i++) {
 		    		getAmountPerStrategy(list.get(i).getStrategy());
 		    	}
@@ -379,6 +387,9 @@ public class GamePlay {
 	    			endTournament = true;
 	    		}
 	    		else if (heuristicsAmount == players) {
+	    			endTournament = true;
+	    		}
+	    		else if (shortestChainAmount == players) {
 	    			endTournament = true;
 	    		}
 	    	

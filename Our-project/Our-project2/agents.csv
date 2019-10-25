@@ -1,4 +1,5 @@
 name;amountPlayed;strategy
+Cupid;0;shortestchain
 Laurence;0;random
 Bobby;0;greedy
 Julian;0;heuristic
