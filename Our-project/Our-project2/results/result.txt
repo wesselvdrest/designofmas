@@ -151,3 +151,194 @@ Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrateg
 0, ShortestChain Player, null, Greedy Player, ShortestChain Player, null, null, 0, 0, 0
 Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
 0, ShortestChain Player, null, Greedy Player, ShortestChain Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Greedy Player, null, Human, Greedy Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Greedy Player, null, Human, Greedy Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Greedy Player, null, Human, Greedy Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, None, None, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, None, None, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, None, None, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, None, None, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, Human, null, Human, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, DoubleDealing Player, ShortestChain Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, ShortestChain Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, Galen, random, Galen, Susan, random, greedy, 40, 14, 14, 1, 1
+0, Coleman, heuristic, Coleman, Haley, heuristic, heuristic, 41, 13, 14, 1, 1
+0, Rudolph, greedy, Rudolph, Tinisha, greedy, random, 41, 13, 14, 1, 1
+0, Julian, heuristic, Andres, Julian, random, heuristic, 40, 14, 14, 1, 1
+0, None, None, Gerry, Bobby, random, greedy, 39, 14, 15, 1, 1
+0, Errol, random, Yuonne, Errol, random, random, 39, 14, 15, 1, 1
+0, Thurman, greedy, Thurman, Porter, greedy, random, 39, 14, 15, 1, 1
+0, None, None, Sean, Sonny, random, heuristic, 38, 15, 15, 1, 1
+0, Sachiko, greedy, Sachiko, Alonso, greedy, random, 38, 15, 15, 1, 1
+0, None, None, Franklin, Jewel, random, greedy, 37, 16, 15, 1, 1
+0, Orlando, greedy, Garland, Orlando, random, greedy, 37, 16, 15, 1, 1
+0, Leila, heuristic, Eugene, Leila, random, heuristic, 36, 17, 15, 1, 1
+0, Madusa, doubleDealing, Kermit, Madusa, greedy, doubleDealing, 35, 17, 16, 1, 1
+0, Desmond, heuristic, Desmond, Dong, heuristic, random, 35, 16, 16, 1, 2
+0, Stacey, random, Stacey, Joel, random, random, 34, 16, 17, 1, 2
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, Coleman, heuristic, Coleman, Courtney, heuristic, random, 40, 14, 14, 1, 1
+0, Galen, random, Galen, Andres, random, random, 39, 14, 15, 1, 1
+0, Celestine, random, Celestine, Carson, random, random, 39, 14, 15, 1, 1
+0, Kermit, greedy, Kermit, Hunter, greedy, random, 39, 14, 15, 1, 1
+0, Alonso, random, Alonso, Kirby, random, random, 38, 15, 15, 1, 1
+0, David, random, Ben, David, random, random, 38, 15, 15, 1, 1
+0, None, None, Thurman, Merlin, greedy, heuristic, 38, 15, 15, 1, 1
+0, Cupid, shortestChain, Cupid, Mario, shortestChain, random, 38, 15, 15, 1, 1
+0, Rudolph, greedy, Rudolph, Laurence, greedy, random, 37, 15, 15, 2, 1
+0, None, None, Jewel, Janelle, greedy, greedy, 36, 16, 15, 2, 1
+0, Jay, random, Garland, Jay, random, random, 36, 16, 15, 2, 1
+0, Emerson, random, Stacey, Emerson, random, random, 36, 16, 15, 2, 1
+0, Susan, greedy, Susan, Jamey, greedy, greedy, 36, 16, 15, 2, 1
+0, Leticia, random, Leticia, Milan, random, random, 36, 16, 15, 2, 1
+0, Sharmaine, heuristic, Marta, Sharmaine, random, heuristic, 36, 16, 15, 2, 1
+0, Chanda, random, Porter, Chanda, random, random, 35, 16, 16, 2, 1
+0, Andy, random, Andy, Maura, random, greedy, 35, 16, 16, 2, 1
+0, Lynn, heuristic, Eugene, Lynn, random, heuristic, 36, 15, 16, 2, 1
+0, Leila, heuristic, Jeremy, Leila, random, heuristic, 35, 15, 17, 2, 1
+0, Franklin, random, Franklin, Robby, random, random, 34, 15, 18, 2, 1
+0, None, None, Sean, Fallon, random, random, 34, 15, 18, 2, 1
+0, Bobby, greedy, Dong, Bobby, random, greedy, 34, 15, 18, 2, 1
+0, Haley, heuristic, Yuonne, Haley, random, heuristic, 33, 16, 18, 2, 1
+0, Magan, heuristic, Magan, Magaly, heuristic, random, 32, 16, 19, 2, 1
+0, Guadalupe, greedy, Errol, Guadalupe, random, greedy, 31, 16, 20, 2, 1
+0, None, None, Pat, Desmond, heuristic, heuristic, 30, 17, 20, 2, 1
+0, Sachiko, greedy, Sachiko, Tinisha, greedy, random, 30, 17, 20, 2, 1
+0, Ernie, greedy, Ernie, Joel, greedy, random, 29, 18, 20, 2, 1
+0, Raymundo, heuristic, Raymundo, Alice, heuristic, random, 28, 19, 20, 2, 1
+0, Tyron, random, Gerry, Tyron, random, random, 27, 19, 21, 2, 1
+0, Sonny, heuristic, Sonny, Bill, heuristic, greedy, 27, 19, 21, 2, 1
+0, Lino, heuristic, Lino, Ellyn, heuristic, random, 27, 18, 22, 2, 1
+0, Julian, heuristic, Julian, Orlando, heuristic, greedy, 26, 18, 23, 2, 1
+0, Damion, random, Damion, Sammy, random, random, 26, 17, 24, 2, 1
+0, Madusa, doubleDealing, Madusa, Earl, doubleDealing, heuristic, 26, 17, 24, 2, 1
+1, Guadalupe, greedy, Guadalupe, Madusa, greedy, doubleDealing, 26, 17, 23, 2, 2
+1, None, None, Ernie, Jewel, greedy, greedy, 26, 18, 23, 2, 1
+1, Merlin, heuristic, Merlin, Kirby, heuristic, random, 26, 18, 23, 2, 1
+1, Mario, shortestChain, Mario, Thurman, shortestChain, greedy, 25, 18, 24, 2, 1
+1, Bill, heuristic, Rudolph, Bill, greedy, heuristic, 25, 17, 24, 3, 1
+1, Milan, random, Ben, Milan, random, random, 25, 16, 25, 3, 1
+1, Leila, heuristic, Leila, Tyron, heuristic, random, 25, 16, 25, 3, 1
+1, Julian, heuristic, Julian, Dong, heuristic, greedy, 24, 16, 26, 3, 1
+1, Yuonne, heuristic, Yuonne, Jay, heuristic, random, 24, 15, 27, 3, 1
+1, Magan, heuristic, Magan, Alice, heuristic, heuristic, 23, 15, 28, 3, 1
+1, Lynn, heuristic, Lynn, David, heuristic, random, 23, 15, 28, 3, 1
+1, None, None, Orlando, Hunter, heuristic, greedy, 22, 15, 29, 3, 1
+1, Haley, heuristic, Haley, Susan, heuristic, greedy, 22, 15, 29, 3, 1
+1, Sachiko, greedy, Sachiko, Laurence, greedy, greedy, 22, 14, 30, 3, 1
+1, Porter, random, Porter, Damion, random, random, 22, 14, 30, 3, 1
+1, None, None, Robby, Jeremy, random, heuristic, 22, 14, 30, 3, 1
+1, Desmond, heuristic, Desmond, Maura, heuristic, random, 22, 14, 30, 3, 1
+1, None, None, Sammy, Andres, random, random, 21, 14, 31, 3, 1
+1, None, None, Galen, Sonny, random, heuristic, 21, 14, 31, 3, 1
+1, Pat, heuristic, Pat, Joel, heuristic, greedy, 21, 14, 31, 3, 1
+1, Lino, heuristic, Lino, Magaly, heuristic, heuristic, 21, 13, 32, 3, 1
+1, None, None, Kermit, Coleman, greedy, heuristic, 21, 13, 32, 3, 1
+1, Sean, random, Fallon, Sean, random, random, 21, 13, 32, 3, 1
+1, Cupid, shortestChain, Cupid, Carson, shortestChain, random, 21, 13, 32, 3, 1
+1, Marta, heuristic, Marta, Celestine, heuristic, random, 20, 13, 32, 4, 1
+1, Eugene, heuristic, Emerson, Eugene, random, heuristic, 19, 13, 33, 4, 1
+1, Courtney, heuristic, Courtney, Garland, heuristic, random, 18, 13, 34, 4, 1
+1, Sharmaine, heuristic, Sharmaine, Franklin, heuristic, random, 17, 13, 35, 4, 1
+1, None, None, Errol, Earl, greedy, doubleDealing, 16, 13, 36, 4, 1
+1, Janelle, greedy, Alonso, Janelle, random, greedy, 16, 13, 36, 4, 1
+1, Raymundo, heuristic, Raymundo, Jamey, heuristic, greedy, 15, 14, 36, 4, 1

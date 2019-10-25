@@ -36,8 +36,9 @@ public class GamePlay {
     private String blueSolverName;
     private int randomAmount = 0;
     private int greedyAmount = 0;
-    private int shortestChainAmount = 0;
     private int heuristicsAmount = 0;
+    private int shortestChainAmount = 0;
+    private int doubleDealingAmount = 0;
     private int test = 1;
     private boolean endTournament = false;
     
@@ -121,8 +122,11 @@ public class GamePlay {
         case "heuristic":
         	heuristicsAmount++;
         	break;
-        case "shortestchain":
+        case "shortestChain":
         	shortestChainAmount++;
+        	break;
+        case "doubleDealing":
+        	doubleDealingAmount++;
         	break;
         default:
         	break;
@@ -164,6 +168,7 @@ public class GamePlay {
 	    		greedyAmount = 0;
 	    		heuristicsAmount = 0;
 	    		shortestChainAmount = 0;
+	    		doubleDealingAmount = 0;
 	            for (int i = 0; i < players; i++) {
 		    		getAmountPerStrategy(list.get(i).getStrategy());
 		    	}
@@ -172,26 +177,26 @@ public class GamePlay {
                 statusLabel.setText( redName + " is the winner!");
                 statusLabel.setForeground(Color.RED);
 //            	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount");
-            	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ redName + ", "+ redSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
+            	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ redName + ", "+ redSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount +", "+ shortestChainAmount +", "+ doubleDealingAmount);
             	if (tournament) {
             		list.get(agent2).setStrategy(redSolverName);
             	}
-            	System.out.println("Winner: "+ redSolverName  + " "+redName +"\t Opponent: "+ blueSolverName  + " "+blueName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
+            	System.out.println("Winner: "+ redSolverName  + " "+redName +"\t Opponent: "+ blueSolverName  + " "+blueName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount +"\t SHORTCHAIN: "+ shortestChainAmount +"\t DOUBLEDEAL: "+ doubleDealingAmount);
             }
             else if(winner == Board.BLUE) {
                 statusLabel.setText( blueName + " is the winner!");
                 statusLabel.setForeground(Color.BLUE);
-            	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ blueName + ", "+ blueSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
+            	appendUsingPrintWriter("./results/result.txt", totalGames + ", "+ blueName + ", "+ blueSolverName + ", "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount +", "+ shortestChainAmount +", "+ doubleDealingAmount);
             	if (tournament) {
             		list.get(agent1).setStrategy(blueSolverName);
             	}
-            	System.out.println("Winner: "+ blueSolverName  + " "+blueName +"\t Opponent: "+ redSolverName  + " "+redName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
+            	System.out.println("Winner: "+ blueSolverName  + " "+blueName +"\t Opponent: "+ redSolverName  + " "+redName +"\t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount +"\t SHORTCHAIN: "+ shortestChainAmount +"\t DOUBLEDEAL: "+ doubleDealingAmount);
             }
             else {
                 statusLabel.setText("Game Tied!");
                 statusLabel.setForeground(Color.BLACK);
-            	appendUsingPrintWriter("./results/result.txt", totalGames + ", None, None, "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount);
-            	System.out.println("Winner: NONE \t Opponent: NONE \t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount);
+            	appendUsingPrintWriter("./results/result.txt", totalGames + ", None, None, "+ redName + ", "+ blueName + ", "+ redSolverName + ", "+ blueSolverName + ", "+ randomAmount +", "+ greedyAmount+", "+ heuristicsAmount +", "+ shortestChainAmount +", "+ doubleDealingAmount);
+            	System.out.println("Winner: NONE \t Opponent: NONE \t \t EPOCH: "+ totalGames + "\t RANDOM: " + randomAmount +"\t GREEDY: "+ greedyAmount+"\t HEURISTICS: "+ heuristicsAmount +"\t SHORTCHAIN: "+ shortestChainAmount +"\t DOUBLEDEAL: "+ doubleDealingAmount);
             }
             if (tournament) {
             	initGame();
@@ -314,15 +319,17 @@ public class GamePlay {
         	return new SolverGreedy();
         case "heuristic":
         	return new SolverHeuristic();
-        case "shortestchain":
+        case "shortestChain":
         	return new SolverShortestChain();
+        case "doubleDealing":
+        	return new SolverDoubleDealing();
         default:
           return null;
       }
     }
 
     public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName, boolean tournament, int players, int epochs) {
-    	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount");
+    	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount");
     	this.tournament = tournament;
 
     	if (tournament) {
@@ -377,6 +384,7 @@ public class GamePlay {
 	    		greedyAmount = 0;
 	    		heuristicsAmount = 0;
 	    		shortestChainAmount = 0;
+	    		doubleDealingAmount = 0;
 	    		for (int i = 0; i < players; i++) {
 		    		getAmountPerStrategy(list.get(i).getStrategy());
 		    	}
@@ -390,6 +398,9 @@ public class GamePlay {
 	    			endTournament = true;
 	    		}
 	    		else if (shortestChainAmount == players) {
+	    			endTournament = true;
+	    		}
+	    		else if (doubleDealingAmount == players) {
 	    			endTournament = true;
 	    		}
 	    	

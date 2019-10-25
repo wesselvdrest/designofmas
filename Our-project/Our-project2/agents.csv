@@ -1,5 +1,6 @@
 name;amountPlayed;strategy
-Cupid;0;shortestchain
+Cupid;0;shortestChain
+Madusa;0;doubleDealing
 Laurence;0;random
 Bobby;0;greedy
 Julian;0;heuristic

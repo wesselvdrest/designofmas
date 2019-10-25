@@ -300,11 +300,12 @@ public class Board implements Cloneable {
 		} 
 		return ShortestChains;
 	}
+
 	
-	public ArrayList<Point> getDiadCoordinates() {
+	public ArrayList<Point> getNLenghtCoordinates(int ChainLength) {
 		ArrayList<Point> blackList = new ArrayList<Point>(); //these boxes have already been considered
 		ArrayList<Point> Chain = new ArrayList<Point>(); // array for chain coordinates
-		ArrayList<Point> diadChains = new ArrayList<Point>();
+		ArrayList<Point> NLengthChains = new ArrayList<Point>();
 		Point coordinate = new Point();
 		for(int i=0; i<(n-1); i++) { //loop over all boxes of the board
             for(int j=0; j<(n-1); j++) {
@@ -325,8 +326,7 @@ public class Board implements Cloneable {
 				Chain.add(coordinate);
 				int size = Chain.size()-1;
 				Point neighbour= new Point();
-				// look at the neighbours without walls in between, add to Chain untill no new neighbours are added or 
-				// the chain has become longer than 2 (since we only want to collect chains that are 2 boxes long)
+				// look at the neighbours without walls in between, add to Chain untill no new neighbours are added
 				while(Chain.size() != size){ 
 					size = Chain.size();
 					ArrayList<Point> Temp = new ArrayList<Point>(); // Array for temporary storing coordinates to add to the chain
@@ -402,16 +402,16 @@ public class Board implements Cloneable {
 					}
 					Temp.clear();
 				}
-				if(Chain.size() == 2){
+				if(Chain.size() == ChainLength){
 					for(Point crd : Chain){
-						diadChains.add(crd);
+						NLengthChains.add(crd);
 					}
 				}
-//				System.out.println("Final Chain" + diadChains);
+//				System.out.println("Final Chain" + NLengthChains);
 				Chain.clear();
             }
 		} 
-		return diadChains;
+		return NLengthChains;
 	}
 	
 public int[] getChainCount() {
@@ -519,6 +519,16 @@ public int[] getChainCount() {
             }
 		} 
 		return Histogram;
+	}
+
+	public int amountBoxesLeft() {
+		int count = 0;
+        for(int i=0; i<(n-1); i++)
+            for(int j=0; j<(n-1); j++) {
+                if(box[i][j] == BLANK)
+                    count++;
+            }
+        return count;
 	}
 	
 }
