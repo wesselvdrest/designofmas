@@ -342,3 +342,35 @@ Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrateg
 1, None, None, Errol, Earl, greedy, doubleDealing, 16, 13, 36, 4, 1
 1, Janelle, greedy, Alonso, Janelle, random, greedy, 16, 13, 36, 4, 1
 1, Raymundo, heuristic, Raymundo, Jamey, heuristic, greedy, 15, 14, 36, 4, 1
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, ShortestChain Player, null, Greedy Player, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, ShortestChain Player, null, Human, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, ShortestChain Player, null, Human, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, ShortestChain Player, null, Human, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, ShortestChain Player, null, Human, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, ShortestChain Player, null, DoubleDealing Player, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, DoubleDealing Player, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, DoubleDealing Player, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, DoubleDealing Player, ShortestChain Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, DoubleDealing Player, null, ShortestChain Player, DoubleDealing Player, null, null, 0, 0, 0, 0, 0

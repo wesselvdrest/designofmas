@@ -45,7 +45,8 @@ public class SolverShortestChain extends GameSolver {
 					return moves.get(i);
 				}
 			}
-			ArrayList<Point> Shorties = board.getShortestChain(); //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
+			ReturnValues chainValues = board.getChainInformation();
+			ArrayList<Point> Shorties = chainValues.shortest; //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
 //        	System.out.println("Shortlist: "+ Shorties);
 			ArrayList<Edge> bMoves = board.getAvailableMoves(Shorties); //Get the open edges of these boxes
 			Collections.shuffle(bMoves);

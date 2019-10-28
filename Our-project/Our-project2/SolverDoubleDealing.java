@@ -34,7 +34,11 @@ public class SolverDoubleDealing extends GameSolver {
 		}
 		else {
 			ArrayList<Edge> moves = board.getAvailableMoves();
-			ArrayList<Point> singleBoxes = board.getNLenghtCoordinates(1);
+			ReturnValues chainValues = board.getChainInformation();
+			ArrayList<Point> Shorties = chainValues.shortest; //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
+			ArrayList<Point> singleBoxes = chainValues.singleBoxes;
+			ArrayList<Point> diadChains = chainValues.diadChains;
+			
 //			System.out.println(singleBoxes);
 			ArrayList<Edge> singleMoves = board.getAvailableMoves(singleBoxes);
 			int moveCount = moves.size();
@@ -94,7 +98,7 @@ public class SolverDoubleDealing extends GameSolver {
 				}
 			}
 			
-			int[] Histogram = board.getChainCount();
+			int[] Histogram = chainValues.Histogram;
 			int HistSize = Histogram.length;
 			int currentcount = 0; //endscore if we don't double cross
 			int reversecount = 0; //if we do double cross, what could we score
@@ -133,7 +137,6 @@ public class SolverDoubleDealing extends GameSolver {
 						return moves.get(i);
 					}
 				}
-				ArrayList<Point> Shorties = board.getShortestChain(); //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
 				ArrayList<Edge> bMoves = board.getAvailableMoves(Shorties); //Get the open edges of these boxes
 				Collections.shuffle(bMoves);
 				return bMoves.get(0);//Pick one of these edges as the next move (thus opening the shortest chain).
@@ -142,10 +145,9 @@ public class SolverDoubleDealing extends GameSolver {
 			if(reversecount > currentcount && canTakeBox){
 //				System.out.println("Try to doubleDeal");
 				// score will be higher if you double deal (by opening the outside of a diad (which does not result in increased score))
-				ArrayList<Point> Diads = board.getNLenghtCoordinates(2);
-				if(!Diads.isEmpty()){
+				if(!diadChains.isEmpty()){
 //					System.out.println("DIADS");
-					ArrayList<Edge> dMoves = board.getAvailableMoves(Diads); // get empty sides of the boxes in the diad
+					ArrayList<Edge> dMoves = board.getAvailableMoves(diadChains); // get empty sides of the boxes in the diad
 					int DiadSize = dMoves.size();
 					score = board.getScore(color);
 					for(int i=0;i<DiadSize;i++) { // find a move that does not take a box if possible
@@ -172,11 +174,10 @@ public class SolverDoubleDealing extends GameSolver {
 			if(reversecount > currentcount && canTakeBox == false){
 				//if double dealing is better and there are no boxes to take, try a half-hearted handout (outside of diad)
 				// we are going to try to not open the chain, by having the opponent make a mistake
-				ArrayList<Point> Diads = board.getNLenghtCoordinates(2);
 				int n = board.getSize();
-				if(!Diads.isEmpty()){
+				if(!diadChains.isEmpty()){
 //					System.out.println("MAke a mistake!");
-					ArrayList<Edge> dMoves = board.getAvailableMoves(Diads); // get empty sides of the boxes in the diad
+					ArrayList<Edge> dMoves = board.getAvailableMoves(diadChains); // get empty sides of the boxes in the diad
 					for(Edge edge : dMoves) { // find a move that is on a border
 						if((edge.isHorizontal() && edge.getY()==0) || (edge.isHorizontal() && edge.getY()==n-1) ||
 						(!(edge.isHorizontal()) && edge.getX()==0) || (!(edge.isHorizontal()) && edge.getX()==n-1) ){
@@ -185,7 +186,6 @@ public class SolverDoubleDealing extends GameSolver {
 					}
 				} else { // open smallest chain
 //					System.out.println("Open small chain");
-					ArrayList<Point> Shorties = board.getShortestChain(); //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
 					ArrayList<Edge> bMoves = board.getAvailableMoves(Shorties); //Get the open edges of these boxes
 					Collections.shuffle(bMoves);
 					return bMoves.get(0);//Pick one of these edges as the next move (thus opening the shortest chain).
