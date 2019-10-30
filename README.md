@@ -78,5 +78,4 @@ TreeNode.java |	Write description here.
 
 *Original code from https://github.com/gaurav708/dots-and-boxes, this code provides the basic Dots and Boxes game, with structures like the board and turn taking conventions.Strategies of agents and the tournament setup are implemented by our own team. Only the SolverHeuristics is copied from the original code (file GreedySolver.java), since it was an interesting strategy to add to our own strategies
 
-*https://www.google.com/imgres?imgurl=https://www.coolmathgames.com/sites/cmatgame/files/dots-and-boxes.jpg&imgrefurl=https://www.coolmathgames.com/0-dots-and-boxes&docid=VDfFtFRgJ1TjtM&tbnid=WetuyM6FsVxJ-M:&vet=1&w=600&h=350&source=sh/x/im
 
