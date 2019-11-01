@@ -234,12 +234,14 @@ public class GamePlay {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				pr.close();
-				br.close();
-				fr.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(pr != null && br != null && fr != null) {
+				try {
+					pr.close();
+					br.close();
+					fr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -388,7 +390,10 @@ public class GamePlay {
 	    		for (int i = 0; i < players; i++) {
 		    		getAmountPerStrategy(list.get(i).getStrategy());
 		    	}
-	    		if (randomAmount == players) {
+	    		if (totalGames == epochs) {
+	    			endTournament = true;
+	    		}
+	    		else if (randomAmount == players) {
 	    			endTournament = true;
 	    		}
 	    		else if (greedyAmount == players) {

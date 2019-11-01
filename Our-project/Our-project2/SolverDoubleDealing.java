@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Arrays;
 import java.awt.Point;
 
 public class SolverDoubleDealing extends GameSolver {

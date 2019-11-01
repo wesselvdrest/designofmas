@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Arrays;
 import java.awt.Point;
-import java.util.Random;
 
 public class SolverShortestChain extends GameSolver {
 

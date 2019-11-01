@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //
-// Original code from https://github.com/gaurav708/dots-and-boxes, this code provides the basic Dots and Boxes game, 
-// with structures like the board and turn taking conventions.
+// Original code from https://github.com/gaurav708/dots-and-boxes, read more below 
+// this code provides the basic Dots and Boxes game, with structures like the board and turn taking conventions.
 // Strategies of agents and the tournament setup are implemented by our own team. 
 // Only the SolverHeuristics is copied from the original code (file GreedySolver.java), 
 // since it was an interesting strategy to add to our own strategies
@@ -20,7 +20,7 @@ public class Main {
 	private CsvParser agents;
 
     private int n = 5;
-    private int amountOfPlayers = 70;
+    private int amountOfPlayers = 100;
     private int epochs = 100;
     private GameSolver redSolver, blueSolver;
     private String redName, blueName;
