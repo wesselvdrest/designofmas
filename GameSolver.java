@@ -5,9 +5,11 @@ public abstract class GameSolver {
     private final static int cThree = 15;
     private final static int cTwo = 1;
 
+    // This function tracks the boxes scored by both players. 
+    // The number of points of the two players tells how many boxes are still left empty. When no boxes are left, the game has finished. 
     protected int heuristic(final Board board, int color) {
         int value;
-        if(referenceColor == Board.RED)
+        if(referenceColor == Board.RED) 
             value = cScore * board.getRedScore() - cScore * board.getBlueScore();
         else 
             value = cScore * board.getBlueScore() - cScore * board.getRedScore();
