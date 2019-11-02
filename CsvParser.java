@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
+//This class is just a parser of .CSV files
+//it reads in all rows and columns of the file and for each agents it creates a new Agent using the Agent class.
 public class CsvParser {
 	public static ArrayList<Agent> agents = new ArrayList<Agent>();
 	
@@ -43,6 +46,7 @@ public class CsvParser {
         }
     }
     
+//    Returns an ArrayList of all agents
     public ArrayList<Agent> getAgents() {
     	return agents;
     }
