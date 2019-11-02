@@ -31,7 +31,7 @@ public class SolverShortestChain extends GameSolver {
 			}
 			return moves.get(maxValueIndex);
 		}
-		else {
+		else { //Endgame = true
 			referenceColor = color;
 			ArrayList<Edge> moves = board.getAvailableMoves();
 			int moveCount = moves.size();
@@ -45,7 +45,6 @@ public class SolverShortestChain extends GameSolver {
 			}
 			ReturnValues chainValues = board.getChainInformation();
 			ArrayList<Point> Shorties = chainValues.shortest; //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
-//        	System.out.println("Shortlist: "+ Shorties);
 			ArrayList<Edge> bMoves = board.getAvailableMoves(Shorties); //Get the open edges of these boxes
 			Collections.shuffle(bMoves);
 			return bMoves.get(0);//Pick one of these edges as the next move (thus opening the shortest chain).

@@ -183,7 +183,7 @@ public class Board implements Cloneable {
         return count;
     }
 
-	public int amountBoxesLeft() {
+	public int amountBoxesLeft() { //loops over all boxes and counts how many are left
 		int count = 0;
         for(int i=0; i<(n-1); i++)
             for(int j=0; j<(n-1); j++) {
@@ -193,13 +193,15 @@ public class Board implements Cloneable {
         return count;
 	}
 	
-	public ReturnValues getChainInformation() {
-		int[] Histogram = new int[64]; //Initializes at zero. Size of largest board (cannot have a chain longer than that)
-		ArrayList<Point> singleBoxes = new ArrayList<Point>();
-		ArrayList<Point> diadChains = new ArrayList<Point>();
-		ArrayList<Point> shortestChains = new ArrayList<Point>();
+	//Goes over the board and extracts information about the chains, how many, how long and 
+	// what the coordinates of certain chains are (of length 1, length 2 and the shortest chain on the board)
+	public ReturnValues getChainInformation() { 
+		int[] Histogram = new int[64]; //Initializes at zero. Size of largest board (8*8) (cannot have a chain longer than that)
+		ArrayList<Point> singleBoxes = new ArrayList<Point>(); //coordinates for chains of length 1
+		ArrayList<Point> diadChains = new ArrayList<Point>(); //coordinates for chains of length 2
+		ArrayList<Point> shortestChains = new ArrayList<Point>(); //coordinates for shortest chain on the board
 		ArrayList<Point> blackList = new ArrayList<Point>(); //these boxes have already been considered
-		ArrayList<Point> Chain = new ArrayList<Point>(); // array for chain coordinates
+		ArrayList<Point> Chain = new ArrayList<Point>(); // array for current chain coordinates
 		Point coordinate = new Point();
 		int sizeShortest = 64;
 		for(int i=0; i<(n-1); i++) { //loop over all boxes of the board
@@ -296,13 +298,13 @@ public class Board implements Cloneable {
 					}
 					Temp.clear();
 				}
-				Histogram[Chain.size()]++;
-				if(Chain.size() == 1){
+				Histogram[Chain.size()]++; //add chain to histogram
+				if(Chain.size() == 1){ //if the chain is length 1, add it to the other length 1 coordinates
 					for(Point crd : Chain){
 						singleBoxes.add(crd);
 					}
 				}
-				if(Chain.size() == 2){
+				if(Chain.size() == 2){ //if the chain is length 2, add it to the other length 2 coordinates
 					for(Point crd : Chain){
 						diadChains.add(crd);
 					}
@@ -312,14 +314,13 @@ public class Board implements Cloneable {
 						shortestChains.add(crd);
 					}
 				}
-				if(Chain.size() < sizeShortest){ //we found a shorter chain
+				if(Chain.size() < sizeShortest){ //if we found a shorter chain than the current shortchain, replace it
 					sizeShortest = Chain.size();
 					shortestChains.clear();
 					for(Point crd : Chain){
 						shortestChains.add(crd);
 					}
 				} 
-//				System.out.println("Final Chain" + Chain);
 				Chain.clear();
             }
 		} 

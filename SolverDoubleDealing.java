@@ -31,14 +31,13 @@ public class SolverDoubleDealing extends GameSolver {
 			}
 			return moves.get(maxValueIndex);
 		}
-		else {
+		else { //Endgame = true
 			ArrayList<Edge> moves = board.getAvailableMoves();
 			ReturnValues chainValues = board.getChainInformation();
 			ArrayList<Point> Shorties = chainValues.shortest; //Return the array with the boxes that are part of the shortest chain (ideally single blocks)
 			ArrayList<Point> singleBoxes = chainValues.singleBoxes;
 			ArrayList<Point> diadChains = chainValues.diadChains;
 			
-//			System.out.println(singleBoxes);
 			ArrayList<Edge> singleMoves = board.getAvailableMoves(singleBoxes);
 			int moveCount = moves.size();
 			int singleCount = singleMoves.size();
@@ -51,23 +50,21 @@ public class SolverDoubleDealing extends GameSolver {
 			for(int i=0;i<moveCount;i++) { // if you can double cross, do so.
 				Board nextBoard = board.getNewBoard(moves.get(i), color);
 				if(nextBoard.getScore(color) == score+2) {
-//					System.out.println("doubleCross");
 					return moves.get(i);
 				}
 			}
 			for(int i=0;i<singleCount;i++) { // if you can take a single box, do so.
 				Board nextBoard = board.getNewBoard(singleMoves.get(i), color);
 				if(nextBoard.getScore(color) > score) {
-//					System.out.println("get the box");
 					return singleMoves.get(i);
 				}
 			}
 			
 			
 			
-			while(flag == true){
+			while(flag == true){ // check how many boxes can be taken
 				flag = false;
-				for(int i=0;i<moveCount;i++) { // check whether boxes can be taken (are you in control currently)
+				for(int i=0;i<moveCount;i++) { 
 					Board nextBoard = LastBoard.getNewBoard(moves.get(i), color);
 					if(nextBoard.getScore(color) > LastBoard.getScore(color)) {
 						boxCounter++;
@@ -79,7 +76,6 @@ public class SolverDoubleDealing extends GameSolver {
 					}
 				}
 			}
-//			System.out.println("boxcounter: " + boxCounter);
 			if(boxCounter > 0){
 				canTakeBox = true;
 			}
@@ -99,8 +95,8 @@ public class SolverDoubleDealing extends GameSolver {
 			
 			int[] Histogram = chainValues.Histogram;
 			int HistSize = Histogram.length;
-			int currentcount = 0; //endscore if we don't double cross
-			int reversecount = 0; //if we do double cross, what could we score
+			int currentcount = 0; //end score if we don't double deal
+			int reversecount = 0; //if we do double deal, what could we score
 			if(boxCounter>1){
 				Histogram[boxCounter]--;
 				currentcount += boxCounter;
@@ -124,7 +120,6 @@ public class SolverDoubleDealing extends GameSolver {
 			
 			
 			if(currentcount >= reversecount){
-//				System.out.println("No doubleDealing");
 				// you will gain the most chains by not double dealing: take boxes if you can and open the smallest chain
 				moves = board.getAvailableMoves();
 				moveCount = moves.size();
@@ -142,10 +137,8 @@ public class SolverDoubleDealing extends GameSolver {
 			}
 
 			if(reversecount > currentcount && canTakeBox){
-//				System.out.println("Try to doubleDeal");
-				// score will be higher if you double deal (by opening the outside of a diad (which does not result in increased score))
+				// score will be higher if you double deal (by opening the outside of a diad chain (which does not result in increased score))
 				if(!diadChains.isEmpty()){
-//					System.out.println("DIADS");
 					ArrayList<Edge> dMoves = board.getAvailableMoves(diadChains); // get empty sides of the boxes in the diad
 					int DiadSize = dMoves.size();
 					score = board.getScore(color);
@@ -157,7 +150,6 @@ public class SolverDoubleDealing extends GameSolver {
 					}
 					return dMoves.get(0);
 				} else { // take the box
-//					System.out.println("Nah, take a box");
 					score = board.getScore(color);
 					moves = board.getAvailableMoves();
 					moveCount = moves.size();
@@ -171,20 +163,18 @@ public class SolverDoubleDealing extends GameSolver {
 			}
 			
 			if(reversecount > currentcount && canTakeBox == false){
-				//if double dealing is better and there are no boxes to take, try a half-hearted handout (outside of diad)
+				//if double dealing is better and there are no boxes to take, try a half-hearted handout (outside of diad chain)
 				// we are going to try to not open the chain, by having the opponent make a mistake
 				int n = board.getSize();
 				if(!diadChains.isEmpty()){
-//					System.out.println("MAke a mistake!");
 					ArrayList<Edge> dMoves = board.getAvailableMoves(diadChains); // get empty sides of the boxes in the diad
-					for(Edge edge : dMoves) { // find a move that is on a border
+					for(Edge edge : dMoves) { // find an edge that is on a border
 						if((edge.isHorizontal() && edge.getY()==0) || (edge.isHorizontal() && edge.getY()==n-1) ||
 						(!(edge.isHorizontal()) && edge.getX()==0) || (!(edge.isHorizontal()) && edge.getX()==n-1) ){
 							return edge;
 						}
 					}
 				} else { // open smallest chain
-//					System.out.println("Open small chain");
 					ArrayList<Edge> bMoves = board.getAvailableMoves(Shorties); //Get the open edges of these boxes
 					Collections.shuffle(bMoves);
 					return bMoves.get(0);//Pick one of these edges as the next move (thus opening the shortest chain).
