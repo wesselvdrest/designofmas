@@ -877,3 +877,7 @@ Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrateg
 0, Maura, greedy, Maura, Lasandra, greedy, random, 19, 20, 21, 20, 20
 0, None, None, Damion, Galen, random, random, 18, 21, 21, 20, 20
 0, Magan, heuristic, Magan, Kirby, heuristic, doubleDealing, 18, 21, 21, 20, 20
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, Hunter, shortestChain, Ellyn, Hunter, random, shortestChain, 20, 20, 20, 20, 20
+0, None, None, Merissa, Tyron, heuristic, doubleDealing, 19, 20, 20, 21, 20
+0, Elvera, greedy, Carson, Elvera, random, greedy, 19, 20, 20, 21, 20

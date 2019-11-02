@@ -36,7 +36,6 @@ public class Main {
 
     public Main() {
     	agents.main();
-    	
         
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
