@@ -1,6 +1,6 @@
 # Simulating Evolutionary Game Theory in a N-Player Population
 
-_For this study we used the game Dots-and-Boxes_
+_For this study we used the game Dots-and-Boxes._
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software and how to install them. WARNING: Program runs on the Mac but visualization may be impaired in the case you run on a 7x7 grid.
 
 ```
 - Update to Java Version 8 Update 221 (Using JDK 11 and 13 also works)
@@ -30,6 +30,8 @@ git clone https://github.com/wesselvdrest/group_B11_designofmas.git
 
 Load the code into your Java IDE of choice. For example, in Eclipse 2019-09, go to "File" -> "Open projects from file system" and then select the Folder `Our-project/Our-project` which contains the (hidden) file `.project`.
 
+For the tournament to run and write the results to the files, we'll need to allocate more memory to the thread stack size. To do this you open the run configurations and add `-Xss20m` to the VM arguments. This will set the thread stack size to 20MB, which will be sufficient to write the results of tournaments that will take a long time to finish.
+
 ```
 Run
 ```
@@ -44,33 +46,28 @@ In this section all files have been listed in alphabetical order and detailing w
 
 File Name |	Description
 ------------ | 	-------------
-.classpath |	Write description here.
-.gitignore |	Write description here.
-.project |	Write description here.
-Agent.java |	Write description here.
-agents.csv |	Write description here.
-Board.java |	Write description here.
-CsvParser.java |	Write description here.
-dot.png |	Write description here.
-Edge.java |	Write description here.
+Agent.java |	Own file.
+agents.csv |	Own file.
+Board.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Board.java. Functions that have been added to the original: getAvailableMoves(ArrayList<Point> Boxes), amountBoxesLeft() and getChainInformation().
+CsvParser.java |	Own file.
+Edge.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Edge.java
 GamePlay.java |	Write description here.
-GameSolver.java |	Write description here.
-GreedySolver.java |	Write description here.
+GameSolver.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GameSolver.java
 Main.java |	Write description here.
-Pair.java |	Write description here.
-RandomSolver.java |	Write description here.
-results |	Write description here.
-SolverGreedy.java |	Write description here.
-SolverHeuristic.java |	Write description here.
-SolverRandom.java |	Write description here.
-TestProgram.java |	Write description here.
-title.png |	Write description here.
-TreeNode.java |	Write description here.
+ReturnValues.java |	Own file.
+SolverGreedy.java |	Own file.
+SolverHeuristic.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GreedySolver.java
+SolverRandom.java |	Own file.
+SolverDoubleDealing.java |	Own file.
+SolverGreedy.java |	Own file.
+SolverShortestChain.java |	Own file.
+
+We have also created the Results folder. All results of your run will be written to a text file, which can be found in the Results folder.
 
 ## Authors
 
 * **Han Havinga** - *s2657139*
-* **Julia Mol** - *2904683*
+* **Julia Mol** - *s2904683*
 * **Wessel van der Rest** - *s2873672*
 * **Marc Tuinier** - *s2929139*
 
