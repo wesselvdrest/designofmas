@@ -44,23 +44,23 @@ In this section all files have been listed in alphabetical order and detailing w
 
 File Name |	Description
 ------------ | 	-------------
-Agent.java |	Write description here.
-agents.csv |	Write description here.
-Board.java |	Write description here.
-CsvParser.java |	Write description here.
-Edge.java |	Write description here.
+Agent.java |	Own file
+agents.csv |	Own file
+Board.java |	Edited from https://github.com/gaurav708/ Board.java, added extra functions: getAvailableMoves(ArrayList<Point> Boxes), amountBoxesLeft() and getChainInformation().
+CsvParser.java |	Own file
+Edge.java |	Taken from https://github.com/gaurav708/ Edge.java
 GamePlay.java |	Write description here.
-GameSolver.java |	Write description here.
+GameSolver.java |	Taken from https://github.com/gaurav708/ GameSolver.java
 Main.java |	Write description here.
-ReturnValues.java |	Write description here.
-SolverGreedy.java |	Write description here.
-SolverHeuristic.java |	Write description here.
-SolverRandom.java |	Write description here.
-SolverDoubleDealing.java |	Write description here.
-SolverGreedy.java |	Write description here.
-SolverShortestChain.java |	Write description here.
+ReturnValues.java |	Own file
+SolverGreedy.java |	Own file
+SolverHeuristic.java |	Edited from https://github.com/gaurav708/ Greedy.java
+SolverRandom.java |	Own file
+SolverDoubleDealing.java |	Own file
+SolverGreedy.java |	Own file
+SolverShortestChain.java |	Own file
 
-All results of your run will be written to a text file in the Results folder.
+We have also created the Results folder. All results of your run will be written to a text file, which can be found in the Results folder.
 
 ## Authors
 
