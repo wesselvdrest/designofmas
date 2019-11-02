@@ -22,13 +22,13 @@ What things you need to install the software and how to install them. WARNING: P
 
 A step by step overview of how to get the development environment running.
 
-The first step is to clone the file “Our Project”
+The first step is to clone the file “group_B11_designofmas”
 
 ```
 git clone https://github.com/wesselvdrest/group_B11_designofmas.git
 ```
 
-Load the code into your Java IDE of choice. For example, in Eclipse 2019-09, go to "File" -> "Open projects from file system" and then select the Folder `Our-project/Our-project` which contains the (hidden) file `.project`.
+Load the code into your Java IDE of choice. For example, in Eclipse 2019-09, go to "File" -> "Open projects from file system" and then select the Folder `group_B11_designofmas` which contains the (hidden) file `.project`.
 
 For the tournament to run and write the results to the files, we'll need to allocate more memory to the thread stack size. To do this you open the run configurations and add `-Xss20m` to the VM arguments. This will set the thread stack size to 20MB, which will be sufficient to write the results of tournaments that will take a long time to finish.
 
