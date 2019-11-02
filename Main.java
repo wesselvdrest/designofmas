@@ -28,6 +28,7 @@ public class Main {
     private JFrame frame;
     private JLabel modeError, sizeError;
 
+    //All options for strategies
     String[] players = {"Human", "Random Player", "Greedy Player", "Heuristic Player", "ShortestChain Player", "DoubleDealing Player"};
     private JRadioButton[] sizeButton;
 
@@ -35,6 +36,7 @@ public class Main {
     ButtonGroup sizeGroup;
 
     public Main() {
+    	//Make it able to access the agents
     	agents.main();
         
         frame = new JFrame();
@@ -43,6 +45,7 @@ public class Main {
         redList = new JComboBox<String>(players);
         blueList = new JComboBox<String>(players);
 
+        //Create all board-size buttons
         sizeButton = new JRadioButton[7];
         sizeGroup = new ButtonGroup();
         for(int i=0; i<7; i++) {
@@ -63,9 +66,10 @@ public class Main {
     private boolean startGame;
     private boolean startTournament;
 
+    //switch function that returns the correct Solver
     private GameSolver getSolver(int level) {
         switch(level) {
-        case 1: // level == 1
+        case 1:
         	return new SolverRandom();
         case 2:
         	return new SolverGreedy();
@@ -80,6 +84,11 @@ public class Main {
       }
     }
 
+//    If the start game button is pressed this function gets fired.
+//    it checks which strategies are selected, and checks which board size
+//    is selected.
+//    If no board size is selected it returns the error message that a size
+//    should be selected
     private ActionListener submitListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
@@ -112,6 +121,10 @@ public class Main {
         }
     };
     
+//  If the start tournament button is pressed this function gets fired.
+//  it checks which board size is selected.
+//  If no board size is selected it returns the error message that a size
+//  should be selected
     private ActionListener tournamentButtonListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
@@ -144,8 +157,8 @@ public class Main {
         }
     };
 
+//  Initialise the GUI
     public void initGUI() {
-
         redSolver = null;
         blueSolver = null;
 
@@ -164,6 +177,7 @@ public class Main {
         modeError.setPreferredSize(new Dimension(500, 25));
         grid.add(modeError, constraints);
 
+//      Field to select the player strategies
         JPanel modePanel = new JPanel(new GridLayout(2, 1));
         modePanel.setPreferredSize(new Dimension(400, 100));
         modePanel.setBackground(Color.darkGray);
@@ -182,7 +196,6 @@ public class Main {
         grid.setBackground(Color.DARK_GRAY);
 
         ++constraints.gridy;
-//        grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
 
         sizeError = new JLabel("", SwingConstants.CENTER);
         sizeError.setForeground(Color.RED);
@@ -190,6 +203,7 @@ public class Main {
         ++constraints.gridy;
         grid.add(sizeError, constraints);
 
+//      Add all board size buttons
         JPanel sizePanel = new JPanel(new GridLayout(4, 2));
         sizePanel.setPreferredSize(new Dimension(400, 100));
         for(int i=0; i<7; i++)
@@ -199,6 +213,7 @@ public class Main {
         ++constraints.gridy;
         grid.add(sizePanel, constraints);
         
+//      Add button to start the game
         JButton submitButton = new JButton("Start Game");
         submitButton.addActionListener(submitListener);
         ++constraints.gridy;
@@ -211,6 +226,7 @@ public class Main {
         ++constraints.gridy;
         grid.add(getEmptyLabel(new Dimension(500,25)), constraints);
         
+//      Add button to start the tournament
         JPanel tournamentPanel = new JPanel(new GridLayout(1, 5));
         tournamentPanel.setPreferredSize(new Dimension(700, 20));
         JButton tournamentButton = new JButton("Start Tournament");
@@ -231,6 +247,8 @@ public class Main {
         startGame = false;
         startTournament = false;        
     	
+//      If both startGame and startTournament are false it isn't doing anything,
+//      when one of them is true it will continue and it will file a new GamePlay
         while(!startGame && !startTournament) {
             try {
                 Thread.sleep(100);

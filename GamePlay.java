@@ -56,6 +56,7 @@ public class GamePlay {
     private JFrame frame;
     private JLabel redScoreLabel, blueScoreLabel, statusLabel;
 
+//  Function that keeps track of mouse events, so mouse presses and mouse hovering
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
@@ -110,10 +111,10 @@ public class GamePlay {
         }
     };
     
+//  Function that counts the amount of players per strategy
     private void getAmountPerStrategy(String strategy) {
-//    	System.out.println("STRATEGY: "+ strategy);
         switch(strategy) {
-        case "random": // level == 1
+        case "random":
         	randomAmount++;
         	break;
         case "greedy":

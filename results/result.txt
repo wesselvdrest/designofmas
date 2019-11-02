@@ -1,2 +1,9 @@
 Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
 0, Bobby, greedy, Mitzie, Bobby, random, greedy, 20, 20, 20, 20, 20
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, Sachiko, greedy, Sachiko, Audria, greedy, greedy, 20, 20, 20, 20, 20
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, None, None, Creola, Garland, random, doubleDealing, 20, 20, 20, 20, 20
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, Human, null, Human, Greedy Player, null, null, 0, 0, 0, 0, 0
