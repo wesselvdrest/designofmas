@@ -3,18 +3,20 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Board implements Cloneable {
-
+	//Default
     final static int RED = 0;
     final static int BLUE = 1;
     final static int BLACK = 3;
     final static int BLANK = 4;
 
-
+    //Defining the coordinates of the edges and the boxes (a 1x1 square of edges)
     private int[][] hEdge;
     private int[][] vEdge;
     private int[][] box;
+
     private int n, redScore, blueScore;
 
+    // Default board setting
     public Board(int n) {
         hEdge = new int[n-1][n];
         vEdge = new int[n][n-1];
@@ -25,7 +27,7 @@ public class Board implements Cloneable {
         this.n = n;
         redScore = blueScore = 0;
     }
-
+    //Measure how many boxes are scored by player 1 and player 2 (Red vs. Blue)
     public Board clone() {
         Board cloned = new Board(n);
 
@@ -74,7 +76,7 @@ public class Board implements Cloneable {
         else
             return RED;
     }
-
+    //Inform agent which edges are left to choose from
     public ArrayList<Edge> getAvailableMoves() {
         ArrayList<Edge> ret = new ArrayList<Edge>();
         for(int i=0; i<(n-1);i++)
@@ -108,7 +110,7 @@ public class Board implements Cloneable {
 		}
         return ret;
     }
-
+    //Make up the board; fill all the horizontal edges with black-coloured edges
     public ArrayList<Point> setHEdge(int x, int y, int color) {
         hEdge[x][y]=BLACK;
         ArrayList<Point> ret = new ArrayList<Point>();
@@ -126,7 +128,7 @@ public class Board implements Cloneable {
         }
         return ret;
     }
-
+    //Make up the board; fill all the vertical edges with black-coloured edges
     public ArrayList<Point> setVEdge(int x, int y, int color) {
         vEdge[x][y]=BLACK;
         ArrayList<Point> ret = new ArrayList<Point>();
@@ -148,7 +150,7 @@ public class Board implements Cloneable {
     public boolean isComplete() {
         return (redScore + blueScore) == (n - 1) * (n - 1);
     }
-
+    //Winner is player with highest score
     public int getWinner() {
         if(redScore > blueScore) return RED;
         else if(blueScore > redScore) return BLUE;
@@ -163,7 +165,7 @@ public class Board implements Cloneable {
             ret.setVEdge(edge.getX(), edge.getY(), color);
         return ret;
     }
-
+    //System knows of how many edges the board exists. Hence, by deriving the number of edge filled, it knows how many turns are still left
     private int getEdgeCount(int i, int j) {
         int count = 0;
         if(hEdge[i][j] == BLACK) count++;
