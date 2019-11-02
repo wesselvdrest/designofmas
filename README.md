@@ -60,9 +60,6 @@ SolverDoubleDealing.java |	Write description here.
 SolverGreedy.java |	Write description here.
 SolverShortestChain.java |	Write description here.
 
-
-Folder Name |	Description
------------- | 	-------------
 results |	Write description here.
 
 ## Authors
