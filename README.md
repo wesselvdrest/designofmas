@@ -1,6 +1,6 @@
 # Simulating Evolutionary Game Theory in a N-Player Population
 
-_For this study we used the game Dots-and-Boxes_
+_For this study we used the game Dots-and-Boxes._
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software and how to install them. WARNING: Program runs on the Mac but visualization may be impaired in the case you run on a 7x7 grid.
 
 ```
 - Update to Java Version 8 Update 221 (Using JDK 11 and 13 also works)
@@ -44,33 +44,31 @@ In this section all files have been listed in alphabetical order and detailing w
 
 File Name |	Description
 ------------ | 	-------------
-.classpath |	Write description here.
-.gitignore |	Write description here.
-.project |	Write description here.
 Agent.java |	Write description here.
 agents.csv |	Write description here.
 Board.java |	Write description here.
 CsvParser.java |	Write description here.
-dot.png |	Write description here.
 Edge.java |	Write description here.
 GamePlay.java |	Write description here.
 GameSolver.java |	Write description here.
-GreedySolver.java |	Write description here.
 Main.java |	Write description here.
-Pair.java |	Write description here.
-RandomSolver.java |	Write description here.
-results |	Write description here.
+ReturnValues.java |	Write description here.
 SolverGreedy.java |	Write description here.
 SolverHeuristic.java |	Write description here.
 SolverRandom.java |	Write description here.
-TestProgram.java |	Write description here.
-title.png |	Write description here.
-TreeNode.java |	Write description here.
+SolverDoubleDealing.java |	Write description here.
+SolverGreedy.java |	Write description here.
+SolverShortestChain.java |	Write description here.
+
+
+Folder Name |	Description
+------------ | 	-------------
+results |	Write description here.
 
 ## Authors
 
 * **Han Havinga** - *s2657139*
-* **Julia Mol** - *2904683*
+* **Julia Mol** - *s2904683*
 * **Wessel van der Rest** - *s2873672*
 * **Marc Tuinier** - *s2929139*
 
