@@ -46,21 +46,21 @@ In this section all files have been listed in alphabetical order and detailing w
 
 File Name |	Description
 ------------ | 	-------------
-Agent.java |	Own file
-agents.csv |	Own file
-Board.java |	Edited from https://github.com/gaurav708/ Board.java, added extra functions: getAvailableMoves(ArrayList<Point> Boxes), amountBoxesLeft() and getChainInformation().
-CsvParser.java |	Own file
-Edge.java |	Taken from https://github.com/gaurav708/ Edge.java
+Agent.java |	Own file.
+agents.csv |	Own file.
+Board.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Board.java. Functions that have been added to the original: getAvailableMoves(ArrayList<Point> Boxes), amountBoxesLeft() and getChainInformation().
+CsvParser.java |	Own file.
+Edge.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Edge.java
 GamePlay.java |	Write description here.
-GameSolver.java |	Taken from https://github.com/gaurav708/ GameSolver.java
+GameSolver.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GameSolver.java
 Main.java |	Write description here.
-ReturnValues.java |	Own file
-SolverGreedy.java |	Own file
-SolverHeuristic.java |	Edited from https://github.com/gaurav708/ Greedy.java
-SolverRandom.java |	Own file
-SolverDoubleDealing.java |	Own file
-SolverGreedy.java |	Own file
-SolverShortestChain.java |	Own file
+ReturnValues.java |	Own file.
+SolverGreedy.java |	Own file.
+SolverHeuristic.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GreedySolver.java
+SolverRandom.java |	Own file.
+SolverDoubleDealing.java |	Own file.
+SolverGreedy.java |	Own file.
+SolverShortestChain.java |	Own file.
 
 We have also created the Results folder. All results of your run will be written to a text file, which can be found in the Results folder.
 
