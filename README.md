@@ -60,7 +60,7 @@ SolverDoubleDealing.java |	Write description here.
 SolverGreedy.java |	Write description here.
 SolverShortestChain.java |	Write description here.
 
-results |	Write description here.
+All results of your run will be written to a text file in the Results folder.
 
 ## Authors
 
