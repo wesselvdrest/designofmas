@@ -30,6 +30,8 @@ git clone https://github.com/wesselvdrest/group_B11_designofmas.git
 
 Load the code into your Java IDE of choice. For example, in Eclipse 2019-09, go to "File" -> "Open projects from file system" and then select the Folder `Our-project/Our-project` which contains the (hidden) file `.project`.
 
+For the tournament to run and write the results to the files, we'll need to allocate more memory to the thread stack size. To do this you open the project configurations and add `-Xss20m` to the VM arguments. This will set the thread stack size to 20MB
+
 ```
 Run
 ```
