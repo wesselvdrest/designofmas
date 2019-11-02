@@ -134,6 +134,13 @@ public class GamePlay {
         }
     }
 
+//    Here all moves get processed, if an empty edge gets selected it gets coloured 
+//    and set to true, meaning that its filled.
+//    If a box is filled it gets the correct colour
+//    Also if the board is full, the winner gets stated
+//    In the case of a tournament the amount of players per strategy gets counted,
+//    and these results are written to the results file
+//    the losing player takes over the strategy of the winning player and the tournament continues
     private void processMove(Edge location) {
         int x=location.getX(), y=location.getY();
         ArrayList<Point> ret;
@@ -204,6 +211,7 @@ public class GamePlay {
             }
         }
 
+//        Make it the turn of the other player if the board is not full yet
         if(ret.isEmpty()) {
             if(turn == Board.RED) {
                 turn = Board.BLUE;
@@ -218,9 +226,9 @@ public class GamePlay {
                 statusLabel.setForeground(Color.RED);
             }
         }
-
     }
     
+//    Function that appends the current score to the results file
     private static void appendUsingPrintWriter(String filePath, String text) {
 		File file = new File(filePath);
 		FileWriter fr = null;
@@ -247,6 +255,7 @@ public class GamePlay {
 		}
 	}
 
+//    This function is mainly focused on the agents doing their next move
     private void manageGame() {
         while(!board.isComplete()) {
             if(goBack) return;
@@ -265,6 +274,8 @@ public class GamePlay {
         }
     }
 
+//    Function that returns the correct edge 
+//    This is important for the mouseListener to select the correct edge
     private Edge getSource(Object object) {
         for(int i=0; i<(n-1); i++)
             for(int j=0; j<n; j++)
@@ -277,6 +288,8 @@ public class GamePlay {
         return new Edge();
     }
 
+//    This is meant to create the board, specifically the horizontal edges
+//    and add the mouseListener to these edges
     private JLabel getHorizontalEdge() {
         JLabel label = new JLabel();
         label.setPreferredSize(new Dimension(dist, size));
@@ -285,6 +298,8 @@ public class GamePlay {
         return label;
     }
 
+//  This is meant to create the board, specifically the vertical edges
+//  and add the mouseListener to these edges
     private JLabel getVerticalEdge() {
         JLabel label = new JLabel();
         label.setPreferredSize(new Dimension(size, dist));
@@ -293,6 +308,7 @@ public class GamePlay {
         return label;
     }
 
+//  This is meant to create the board, specifically the dots between the edges
     private JLabel getDot() {
         JLabel label = new JLabel();
         label.setPreferredSize(new Dimension(size, size));
@@ -301,6 +317,7 @@ public class GamePlay {
         return label;
     }
 
+//  This is meant to create the board, specifically the boxes between the edges
     private JLabel getBox() {
         JLabel label = new JLabel();
         label.setPreferredSize(new Dimension(dist, dist));
@@ -308,12 +325,15 @@ public class GamePlay {
         return label;
     }
 
+//    This returns a new JLabel, this is implemented in a function because it would be cleaner to create 
+//    Labels with a specific size this way
     private JLabel getEmptyLabel(Dimension d) {
         JLabel label = new JLabel();
         label.setPreferredSize(d);
         return label;
     }
     
+//    This gets the strategies from the players as a string and returns it as a Solver
     private GameSolver getSolver(String strategy) {
         switch(strategy) {
         case "random": // level == 1
@@ -331,10 +351,12 @@ public class GamePlay {
       }
     }
 
+//    This is like the doorway from the main.js file, this function gets called when start Game or start Tournament is pressed.
+//    all variables that are passed gets initialised to the local variants of those variables.
+//    If it's a tournament the players also get loaded in here
     public GamePlay(Main parent, JFrame frame, int n, GameSolver redSolver, GameSolver blueSolver,  String redName, String blueName, boolean tournament, int players, int epochs) {
     	appendUsingPrintWriter("./results/result.txt", "Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount");
     	this.tournament = tournament;
-
     	if (tournament) {
     		agents = new CsvParser();
     		list = agents.getAgents();
@@ -358,8 +380,10 @@ public class GamePlay {
     	}
     }
 
+    
+    //this is for the 'go back to main menu' button
     private boolean goBack;
-
+    
     private ActionListener backListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
@@ -367,6 +391,23 @@ public class GamePlay {
         }
     };
 
+//    Here the game actually begins
+//    When tournament is true the players are used. First we create two new lists
+//    one designed to keep track of the players that still need to play a game, 
+//    and the other to keep track of their id's.
+//    if the list of agents that still need to play a game is empty, we go to the next game.
+//    if there is only one strategy left, or the maximum amount of epochs is reached, 
+//    the tournament will stop otherwise it will continue to the next game.
+//    when the tournament ends, all results from that tournament are written to a new file
+//    Now that we'll have to start the next game two random agents gets chosen and their name, 
+//    strategy and strategyName are used.
+//    for these two agents we increase the amount of games they've played
+    
+//    Everything that happens from now on will also happen for the not tournament variant
+//    the board with a size of n is made and the red player has the first turn.
+//    for the rest all information about the current game is added in Jpanels. 
+//    and the board is created using for loops and the functions mentioned above that also create 
+//    Jpanels for the edges and boxes
     private void initGame() {
     	if (tournament) {
 
