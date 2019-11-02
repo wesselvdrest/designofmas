@@ -1,0 +1,2 @@
+Epoch, Winner, WinnerStrategy, Player, Opponent, playerStrategy, opponentStrategy, randomAmount, greedyAmount, heuristicsAmount, shortestChainAmount, doubleDealingAmount
+0, Bobby, greedy, Mitzie, Bobby, random, greedy, 20, 20, 20, 20, 20
