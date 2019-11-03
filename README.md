@@ -53,8 +53,7 @@ CsvParser.java |	Own file.
 Edge.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Edge.java
 GamePlay.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GamePlay.java. Altered the file in such a way that our design was used, and that the tournament could run correctly.
 GameSolver.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GameSolver.java
-Main.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Main.java. Altered the file in such a way that our design
-  was used, and our options to start the game were implemented.
+Main.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Main.java. Altered the file in such a way that our design was used, and our options to start the game were implemented.
 ReturnValues.java |	Own file.
 SolverGreedy.java |	Own file.
 SolverHeuristic.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GreedySolver.java
