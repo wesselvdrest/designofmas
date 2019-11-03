@@ -51,9 +51,10 @@ agents.csv |	Own file.
 Board.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Board.java. Functions that have been added to the original: getAvailableMoves(ArrayList<Point> Boxes), amountBoxesLeft() and getChainInformation().
 CsvParser.java |	Own file.
 Edge.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Edge.java
-GamePlay.java |	Write description here.
+GamePlay.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GamePlay.java. Altered the file in such a way that our design was used, and that the tournament could run correctly.
 GameSolver.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GameSolver.java
-Main.java |	Write description here.
+Main.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/Main.java. Altered the file in such a way that our design
+  was used, and our options to start the game were implemented.
 ReturnValues.java |	Own file.
 SolverGreedy.java |	Own file.
 SolverHeuristic.java |	Taken from https://github.com/gaurav708/dots-and-boxes/blob/master/GreedySolver.java
